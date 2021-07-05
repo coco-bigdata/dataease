@@ -25,3 +25,18 @@
 [INFO] Running 'npm install' in /Users/git/dataease/frontend
 
 ls ~/.m2/repository/com/github/eirslett
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 7.505 s
+[INFO] Finished at: 2021-07-05T17:08:40+08:00
+[INFO] Final Memory: 30M/286M
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal on project backend: Could not resolve dependencies for project io.dataease:backend:jar:1.0.0: The following artifacts could not be resolved: pentaho-kettle:kettle-core:jar:8.3.0.18-1084, pentaho-kettle:kettle-engine:jar:8.3.0.18-1084, pentaho:metastore:jar:8.3.0.18-1084, org.pentaho.di.plugins:pdi-engine-configuration-impl:jar:8.3.0.7-683, io.dataease:dataease-plugin-xpack:jar:1.0: Failure to find pentaho-kettle:kettle-core:jar:8.3.0.18-1084 in https://maven.aliyun.com/nexus/content/groups/public/ was cached in the local repository, resolution will not be reattempted until the update interval of alimaven has elapsed or updates are forced -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/DependencyResolutionException
