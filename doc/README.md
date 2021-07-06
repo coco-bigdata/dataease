@@ -40,6 +40,7 @@ create database dataease default character set utf8mb4 collate utf8mb4_unicode_c
 
 ```shell
 wget https://mirrors.bfsu.edu.cn/apache/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz
+PATH=/home/git/apache-maven-3.8.1/bin:$PATH
 ```
 
 ```shell
