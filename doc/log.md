@@ -94,3 +94,12 @@ at org.apache.doris.catalog.Catalog.getClusterIdAndRole(Catalog.java:854)
 at org.apache.doris.catalog.Catalog.initialize(Catalog.java:757)
 at org.apache.doris.PaloFe.start(PaloFe.java:108)
 at org.apache.doris.PaloFe.main(PaloFe.java:60)
+
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+inet 127.0.0.1/8 scope host lo
+valid_lft forever preferred_lft forever
+264: eth0@if265: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+link/ether 02:42:ac:13:00:c6 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+inet 172.19.0.198/16 brd 172.19.255.255 scope global eth0
+valid_lft forever preferred_lft forever
