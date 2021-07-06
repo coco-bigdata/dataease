@@ -17,6 +17,14 @@ wget --no-check-certificate https://github.com/dataease/dataease/releases/latest
 
 ```shell
 sudo docker-compose -f docker-compose-kettle-doris.yml up
+
+kettle      | *******************************************************************************
+kettle      | *** Karaf Instance Number: 1 at /opt/kettle/./system/karaf/caches/carte/dat ***
+kettle      | ***   a-1                                                                   ***
+kettle      | *** FastBin Provider Port:52901                                             ***
+kettle      | *** Karaf Port:8802                                                         ***
+kettle      | *** OSGI Service Port:9051                                                  ***
+kettle      | *******************************************************************************
 ```
 
 ```shell
