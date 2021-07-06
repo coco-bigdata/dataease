@@ -29,6 +29,11 @@ kettle      | *** FastBin Provider Port:52901                                   
 kettle      | *** Karaf Port:8802                                                         ***
 kettle      | *** OSGI Service Port:9051                                                  ***
 kettle      | *******************************************************************************
+
+sudo docker-compose up dataease-mysql
+
+mysql -h127.0.0.1 -P3316 -uroot -p
+create database dataease default character set utf8mb4 collate utf8mb4_unicode_ci; 
 ```
 
 ```shell
