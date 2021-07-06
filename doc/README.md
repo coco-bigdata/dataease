@@ -14,3 +14,7 @@
 ```shell
 wget --no-check-certificate https://github.com/dataease/dataease/releases/latest/download/dataease-release-v1.0.1.tar.gz
 ```
+
+```shell
+sudo docker-compose -f docker-compose-kettle-doris.yml up
+```
