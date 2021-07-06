@@ -16,7 +16,7 @@ module.exports = {
     port: port,
     proxy: {
       '^(?!/login)': {
-        target: 'http://localhost:8081/',
+        target: 'http://82.157.51.152:8061/',
         ws: false
       }
     },
