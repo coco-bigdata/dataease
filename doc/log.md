@@ -103,3 +103,62 @@ valid_lft forever preferred_lft forever
 link/ether 02:42:ac:13:00:c6 brd ff:ff:ff:ff:ff:ff link-netnsid 0
 inet 172.19.0.198/16 brd 172.19.255.255 scope global eth0
 valid_lft forever preferred_lft forever
+
+
+show tables;
++----------------------------------+
+| Tables_in_dataease               |
++----------------------------------+
+| chart_group                      |
+| chart_view                       |
+| dataease_version                 |
+| dataset_group                    |
+| dataset_table                    |
+| dataset_table_field              |
+| dataset_table_incremental_config |
+| dataset_table_task               |
+| dataset_table_task_log           |
+| dataset_table_union              |
+| datasource                       |
+| demo_domestic_epidemic           |
+| demo_new_trend_of_diagnosis      |
+| demo_recent_local_cases          |
+| demo_vaccination                 |
+| file_content                     |
+| file_metadata                    |
+| license                          |
+| my_plugin                        |
+| panel_design                     |
+| panel_group                      |
+| panel_link                       |
+| panel_share                      |
+| panel_store                      |
+| panel_subject                    |
+| panel_template                   |
+| panel_view                       |
+| plugin_sys_menu                  |
+| qrtz_blob_triggers               |
+| qrtz_calendars                   |
+| qrtz_cron_triggers               |
+| qrtz_fired_triggers              |
+| qrtz_job_details                 |
+| qrtz_locks                       |
+| qrtz_paused_trigger_grps         |
+| qrtz_scheduler_state             |
+| qrtz_simple_triggers             |
+| qrtz_simprop_triggers            |
+| qrtz_triggers                    |
+| schedule                         |
+| sys_auth                         |
+| sys_auth_detail                  |
+| sys_dept                         |
+| sys_menu                         |
+| sys_role                         |
+| sys_roles_menus                  |
+| sys_user                         |
+| sys_users_roles                  |
+| system_parameter                 |
+| user_role                        |
+| v_auth_model                     |
+| v_auth_privilege                 |
++----------------------------------+
