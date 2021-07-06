@@ -70,3 +70,21 @@ dataease          | ### The error may involve defaultParameterMap
 dataease          | ### The error occurred while setting parameters
 dataease          | ### SQL: SELECT    sys_menu.permission   FROM    ( SELECT GET_V_AUTH_MODEL_ID_P_USE ( ?, 'menu' ) cids ) t,    sys_menu   WHERE    FIND_IN_SET( sys_menu.menu_id, cids ) UNION ALL   SELECT    plugin_sys_menu.permission   FROM    ( SELECT GET_V_AUTH_MODEL_ID_P_USE (  ?, 'menu' ) cids ) t,    plugin_sys_menu   WHERE    FIND_IN_SET( plugin_sys_menu.menu_id, cids )
 dataease          | ### Cause: java.sql.SQLException: Illegal mix of collations (utf8mb4_general_ci,IMPLICIT) and (utf8mb4_unicode_ci,IMPLICIT) for operation 'find_in_set'
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:07 min
+[INFO] Finished at: 2021-07-06T16:37:04+08:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal com.github.eirslett:frontend-maven-plugin:1.9.1:npm (npm run build) on project frontend: Failed to run task: 'npm run build'
+failed. org.apache.commons.exec.ExecuteException: Process exited with an error: 137 (Exit value: 137) -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+[ERROR]
+[ERROR] After correcting the problems, you can resume the build with the command
+[ERROR]   mvn <args> -rf :frontend
