@@ -17,6 +17,9 @@ wget --no-check-certificate https://github.com/dataease/dataease/releases/latest
 
 ```shell
 sudo docker-compose -f docker-compose-kettle-doris.yml up
+sudo docker-compose -f docker-compose-kettle-doris.yml down
+
+sudo docker-compose -f docker-compose-kettle-doris.yml -d up
 
 kettle      | *******************************************************************************
 kettle      | *** Karaf Instance Number: 1 at /opt/kettle/./system/karaf/caches/carte/dat ***
