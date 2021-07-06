@@ -33,6 +33,11 @@ kettle      | ******************************************************************
 sudo docker-compose up dataease-mysql
 sudo docker-compose down
 sudo docker-compose up
+sudo docker-compose up -d
+
+mvn package
+sudo docker-compose build
+sudo docker-compose up -d dataease
 
 mysql -h127.0.0.1 -P3316 -uroot -p
 create database dataease default character set utf8mb4 collate utf8mb4_unicode_ci;
