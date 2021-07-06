@@ -35,7 +35,8 @@ sudo docker-compose down
 sudo docker-compose up
 
 mysql -h127.0.0.1 -P3316 -uroot -p
-create database dataease default character set utf8mb4 collate utf8mb4_unicode_ci; 
+create database dataease default character set utf8mb4 collate utf8mb4_unicode_ci;
+create database dataease;
 ```
 
 ```shell
