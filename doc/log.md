@@ -88,3 +88,9 @@ failed. org.apache.commons.exec.ExecuteException: Process exited with an error: 
 [ERROR]
 [ERROR] After correcting the problems, you can resume the build with the command
 [ERROR]   mvn <args> -rf :frontend
+
+java.io.IOException: the self host 172.19.0.198 does not equal to the host in ROLE file 172.19.0.4. You need to set 'priority_networks' config in fe.conf to match the host 172.19.0.4
+at org.apache.doris.catalog.Catalog.getClusterIdAndRole(Catalog.java:854)
+at org.apache.doris.catalog.Catalog.initialize(Catalog.java:757)
+at org.apache.doris.PaloFe.start(PaloFe.java:108)
+at org.apache.doris.PaloFe.main(PaloFe.java:60)
