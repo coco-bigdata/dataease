@@ -1,0 +1,34 @@
+version: '2.1'
+services:
+  dataease-mysql:
+    image: registry.cn-qingdao.aliyuncs.com/dataease/mysql:5.7.25
+    container_name: dataease-mysql
+    ports:
+      - 3316:3306
+    command:
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+      --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./db/conf.d/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./db/data:/var/lib/mysql
+      - ./db/init-sql:/docker-entrypoint-initdb.d
+    networks:
+      - dataease-network
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
+  dataease:
+    image: registry.cn-qingdao.aliyuncs.com/dataease/dataease:v1.0.1
+    container_name: dataease
+    ports:
+      - 8061:8081
+    volumes:
+      - ./dataease/conf:/opt/dataease/conf
+      - ./dataease/logs:/opt/dataease/logs
+      - ./dataease/plugins:/opt/dataease/plugins/thirdpart
+      - ./dataease/kettle-data:/opt/dataease/data/kettle
+    depends_on:
+      - dataease-mysql
+    networks:
+      - dataease-network
