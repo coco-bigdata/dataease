@@ -41,3 +41,7 @@ services:
     networks:
       - dataease-network
     restart: always
+
+networks:
+  dataease-network:
+    external: true
