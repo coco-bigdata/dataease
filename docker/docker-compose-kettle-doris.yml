@@ -16,8 +16,7 @@ services:
       - ./doris/fe/log:/opt/doris/fe/log
       - ./doris/conf/fe.conf:/opt/doris/fe/conf/fe.conf
     networks:
-      dataease-network :
-        ipv4_address: 172.19.0.198
+      - dataease-network
     restart: always
 
   doris-be:
@@ -30,8 +29,7 @@ services:
       - ./doris/be/log:/opt/doris/be/log
       - ./doris/conf/be.conf:/opt/doris/be/conf/be.conf
     networks:
-      dataease-network :
-        ipv4_address: 172.19.0.199
+      - dataease-network
     restart: always
 
   kettle:
