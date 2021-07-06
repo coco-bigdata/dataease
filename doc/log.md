@@ -57,3 +57,16 @@ ls ~/.m2/repository/com/github/eirslett
 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/DependencyResolutionException
 
 docker-compose network
+
+
+### Error querying database.  Cause: java.sql.SQLException: Illegal mix of collations (utf8mb4_general_ci,IMPLICIT) and (utf8mb4_unicode_ci,IMPLICIT) for operation 'find_in_set'
+
+Caused by: java.sql.SQLException: Illegal mix of collations (utf8mb4_general_ci,IMPLICIT) and (utf8mb4_unicode_ci,IMPLICIT) for operation 'find_in_set'
+
+Caused by: org.apache.ibatis.exceptions.PersistenceException:
+dataease          | ### Error querying database.  Cause: java.sql.SQLException: Illegal mix of collations (utf8mb4_general_ci,IMPLICIT) and (utf8mb4_unicode_ci,IMPLICIT) for operation 'find_in_set'
+dataease          | ### The error may exist in io/dataease/base/mapper/ext/AuthMapper.xml
+dataease          | ### The error may involve defaultParameterMap
+dataease          | ### The error occurred while setting parameters
+dataease          | ### SQL: SELECT    sys_menu.permission   FROM    ( SELECT GET_V_AUTH_MODEL_ID_P_USE ( ?, 'menu' ) cids ) t,    sys_menu   WHERE    FIND_IN_SET( sys_menu.menu_id, cids ) UNION ALL   SELECT    plugin_sys_menu.permission   FROM    ( SELECT GET_V_AUTH_MODEL_ID_P_USE (  ?, 'menu' ) cids ) t,    plugin_sys_menu   WHERE    FIND_IN_SET( plugin_sys_menu.menu_id, cids )
+dataease          | ### Cause: java.sql.SQLException: Illegal mix of collations (utf8mb4_general_ci,IMPLICIT) and (utf8mb4_unicode_ci,IMPLICIT) for operation 'find_in_set'
