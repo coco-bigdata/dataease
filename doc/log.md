@@ -55,3 +55,5 @@ ls ~/.m2/repository/com/github/eirslett
 [ERROR]
 [ERROR] For more information about the errors and possible solutions, please read the following articles:
 [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/DependencyResolutionException
+
+docker-compose network

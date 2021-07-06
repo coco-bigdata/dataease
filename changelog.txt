@@ -1,2 +1,5 @@
 2021-07-05
 1. update node pom
+
+2021-07-06
+1. add docker compose
