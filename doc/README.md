@@ -9,6 +9,16 @@
         <arguments>install --force</arguments>
     </configuration>
 </execution>
+
+<execution>
+    <id>npm run build</id>
+    <goals>
+        <goal>npm</goal>
+    </goals>
+    <configuration>
+        <arguments>run build</arguments>
+    </configuration>
+</execution>
 ```
 
 ```shell
