@@ -1,0 +1,49 @@
+version: '2.1'
+services:
+
+  doris-fe:
+    image: registry.cn-qingdao.aliyuncs.com/dataease/doris-init:0.14.0-611
+    container_name: doris-fe
+    ports:
+      - 8030:8030
+      - 9010:9010
+      - 9020:9020
+      - 9030:9030
+    environment:
+      - DORIS_ROLE=fe-leader
+    volumes:
+      - ./doris/fe/doris-meta:/opt/doris/fe/doris-meta
+      - ./doris/fe/log:/opt/doris/fe/log
+      - ./doris/conf/fe.conf:/opt/doris/fe/conf/fe.conf
+    networks:
+      dataease-network :
+        ipv4_address: 172.19.0.198
+    restart: always
+
+  doris-be:
+    image: registry.cn-qingdao.aliyuncs.com/dataease/doris-init:0.14.0-611
+    container_name: doris-be
+    environment:
+      - DORIS_ROLE=be
+    volumes:
+      - ./doris/be/storage:/opt/doris/be/storage
+      - ./doris/be/log:/opt/doris/be/log
+      - ./doris/conf/be.conf:/opt/doris/be/conf/be.conf
+    networks:
+      dataease-network :
+        ipv4_address: 172.19.0.199
+    restart: always
+
+  kettle:
+    image: registry.cn-qingdao.aliyuncs.com/dataease/kettle:8.3
+    container_name: kettle
+    volumes:
+      - ./doris/conf/:/opt/dataease/conf
+      - ./dataease/kettle-data:/opt/dataease/data/kettle
+    networks:
+      - dataease-network
+    restart: always
+
+networks:
+  dataease-network:
+    external: true

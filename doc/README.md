@@ -99,3 +99,7 @@ Commands:
 
 Run 'docker network COMMAND --help' for more information on a command.
 ```
+
+```shell
+docker doris
+```
