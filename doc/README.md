@@ -109,4 +109,6 @@ be
 doris-spark-1.0.0-SNAPSHOT.jar
 fe
 udf
+
+docker build -f Dockerfile -t doris:0.12.21-release .
 ```
