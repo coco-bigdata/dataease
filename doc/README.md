@@ -102,4 +102,5 @@ Run 'docker network COMMAND --help' for more information on a command.
 
 ```shell
 docker doris
+apache_hdfs_broker  auditloader.zip  be  doris-spark-1.0.0-SNAPSHOT.jar  fe  udf
 ```
