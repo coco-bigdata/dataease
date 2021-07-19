@@ -18,4 +18,6 @@ COPY entrypoint.sh /home/doris
 
 RUN chmod +x /home/doris/entrypoint.sh
 
+ENV DORIS_HOME /home/doris
+
 ENTRYPOINT ["/home/doris/entrypoint.sh"]
