@@ -25,6 +25,12 @@ services:
     container_name: doris-be
     environment:
       - DORIS_ROLE=be
+    ports:
+      - "8040:8040"
+      - "8060:8060"
+      - "9050:9050"
+      - "9060:9060"
+      - "9070:9070"
     volumes:
       - ./doris/be/storage:/opt/doris/be/storage
       - ./doris/be/log:/opt/doris/be/log
