@@ -2,7 +2,9 @@ version: '2.1'
 services:
 
   doris-fe:
-    image: registry.cn-qingdao.aliyuncs.com/dataease/doris-init:0.14.0-611
+    build:
+      context: doris-fe
+      dockerfile: Dockerfile
     container_name: doris-fe
     ports:
       - 8030:8030
@@ -11,6 +13,8 @@ services:
       - 9030:9030
     environment:
       - DORIS_ROLE=fe-leader
+      # - FE_ROLE=fe-follower
+      # - FE_LEADER=172.19.0.198:9010
     volumes:
       - ./doris/fe/doris-meta:/opt/doris/fe/doris-meta
       - ./doris/fe/log:/opt/doris/fe/log
@@ -18,11 +22,21 @@ services:
     networks:
       dataease-network :
         ipv4_address: 172.19.0.198
+    security_opt:
+      - seccomp:unconfined
     restart: always
 
   doris-be:
-    image: registry.cn-qingdao.aliyuncs.com/dataease/doris-init:0.14.0-611
+    build:
+      context: doris-fe
+      dockerfile: Dockerfile
     container_name: doris-be
+    ports:
+      - "8040:8040"
+      - "8060:8060"
+      - "9050:9050"
+      - "9060:9060"
+      - "9070:9070"
     environment:
       - DORIS_ROLE=be
     volumes:
