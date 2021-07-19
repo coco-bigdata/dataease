@@ -34,11 +34,6 @@ services:
       context: doris-fe
       dockerfile: Dockerfile
     container_name: doris-fe-follower
-    ports:
-      - 8030:8030
-      - 9010:9010
-      - 9020:9020
-      - 9030:9030
     environment:
       - DORIS_ROLE=fe-follower
       - DORIS_LEADER=172.19.0.198:9010
