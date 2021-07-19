@@ -260,3 +260,11 @@ SELECT CURRENT_USER();
 | 'root'@'%'     |
 +----------------+
 1 row in set (0.01 sec)
+
+netstat -tlnp
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 127.0.0.11:38543        0.0.0.0:*               LISTEN      -
+tcp        0      0 0.0.0.0:11001           0.0.0.0:*               LISTEN      50/java
+tcp        0      0 0.0.0.0:9051            0.0.0.0:*               LISTEN      50/java
+tcp        0      0 172.19.0.2:18080        0.0.0.0:*               LISTEN      50/java
