@@ -29,6 +29,8 @@ wget --no-check-certificate https://github.com/dataease/dataease/releases/latest
 sudo docker-compose -f docker-compose-kettle-doris.yml up
 sudo docker-compose -f docker-compose-kettle-doris.yml down
 
+sudo docker pull ascdc/jdk8
+
 sudo docker-compose -f docker-compose-kettle-doris2.yml build
 sudo docker-compose -f docker-compose-kettle-doris2.yml up
 sudo docker-compose -f docker-compose-kettle-doris2.yml down
