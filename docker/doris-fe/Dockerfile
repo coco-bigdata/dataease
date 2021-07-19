@@ -14,8 +14,8 @@ EXPOSE 8030 9020 9030 9010 9070 9060 8060 8040 9050 8000
 
 VOLUME ["/home/doris/fe/conf", "/home/doris/fe/log", "/home/doris/fe/doris-meta", "/home/doris/be/conf", "/home/doris/be/log", "/home/doris/be/storage", "/home/doris/fs_brokers/conf"]
 
-COPY entrypoint.sh /
+COPY entrypoint.sh /home/doris
 
-RUN chmod +x entrypoint.sh
+RUN chmod +x /home/doris/entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/home/doris/entrypoint.sh"]
