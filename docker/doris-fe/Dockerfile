@@ -1,4 +1,4 @@
-FROM openkbs/jdk-mvn-py3
+FROM yiluxiangbei/centos7-jdk8
 
 RUN mkdir -p /home/doris
 
