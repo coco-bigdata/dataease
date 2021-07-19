@@ -4,6 +4,7 @@ RUN mkdir -p /home/doris
 
 ENV JAVA_HOME /usr/local/openjdk-8
 
+# 0.12.21
 COPY ./fe/ /home/doris/fe
 
 COPY ./be/ /home/doris/be

@@ -29,6 +29,35 @@ services:
       - seccomp:unconfined
     restart: always
 
+  doris-fe-follower:
+    build:
+      context: doris-fe
+      dockerfile: Dockerfile
+    container_name: doris-fe-follower
+    ports:
+      - 8030:8030
+      - 9010:9010
+      - 9020:9020
+      - 9030:9030
+    environment:
+      - DORIS_ROLE=fe-follower
+      - DORIS_LEADER=172.19.0.198:9010
+      - FE_ROLE=fe-follower
+      # - FE_LEADER=172.19.0.198:9010
+    depends_on:
+      - doris-fe
+    volumes:
+      - "./doris2/fe/log:/home/doris/fe/log"
+      - "./doris2/fe/doris-meta:/home/doris/fe/doris-meta"
+      - "./doris2/fe/conf:/home/doris/fe/conf"
+      - "/etc/localtime:/etc/localtime:ro"
+    networks:
+      dataease-network:
+        ipv4_address: 172.19.0.200
+    security_opt:
+      - seccomp:unconfined
+    restart: always
+
   doris-be:
     build:
       context: doris-fe
