@@ -1,4 +1,4 @@
-FROM ascdc/jdk8
+FROM primetoninc/jdk
 
 RUN mkdir -p /home/doris
 
