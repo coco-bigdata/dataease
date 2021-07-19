@@ -15,6 +15,8 @@ services:
       - DORIS_ROLE=fe-leader
       # - DORIS_ROLE=fe-follower
       # - DORIS_LEADER=172.19.0.198:9010
+      - FE_ROLE=fe-leader
+      # - FE_LEADER=172.19.0.198:9010
     volumes:
       - "./doris2/fe/log:/home/doris/fe/log"
       - "./doris2/fe/doris-meta:/home/doris/fe/doris-meta"
@@ -40,6 +42,7 @@ services:
       - "9070:9070"
     environment:
       - DORIS_ROLE=be
+      - FE_ROLE=be
     volumes:
       - "./doris2/be/log:/home/doris/be/log"
       - "./doris2/be/storage:/home/doris/be/storage"
