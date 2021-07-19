@@ -35,7 +35,7 @@ sudo docker run -it -d yiluxiangbei/centos7-jdk8 /bin/bash
 sudo docker-compose -f docker-compose-kettle-doris2.yml build
 sudo docker-compose -f docker-compose-kettle-doris2.yml up
 sudo docker-compose -f docker-compose-kettle-doris2.yml down
-sudo docker-compose -f docker-compose-kettle-doris2.yml up -2
+sudo docker-compose -f docker-compose-kettle-doris2.yml up -d
 
 sudo docker-compose -f docker-compose-kettle-doris.yml up -d
 sudo docker-compose -f docker-compose-kettle-doris.yml logs -f
