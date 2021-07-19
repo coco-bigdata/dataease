@@ -224,3 +224,5 @@ Version:
 Status: {"lastSuccessReportTabletsTime":"N/A","lastStreamLoadTime":-1}
 1 row in set (0.01 sec)
 
+SELECT CURRENT_USER();
+ERROR 1064 (HY000): errCode = 2, detailMessage = candidate backends is empty
