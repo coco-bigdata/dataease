@@ -72,6 +72,8 @@ create database dataease default character set utf8mb4 collate utf8mb4_general_c
 create database dataease;
 
 mysql -h127.0.0.1 -uroot -p -P9030
+ALTER SYSTEM ADD BACKEND "172.19.0.198:8030";
+SHOW PROC '/backends';
 ```
 
 ```shell
