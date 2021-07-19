@@ -81,6 +81,8 @@ SHOW PROC "/brokers";
 
 ALTER SYSTEM ADD BROKER broker1 "173.29.40.42:8000";
 ALTER SYSTEM drop BROKER broker1 "173.29.40.42:8000";
+CREATE DATABASE dataease;
+
 ```
 
 ```shell
