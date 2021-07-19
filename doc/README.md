@@ -29,6 +29,11 @@ wget --no-check-certificate https://github.com/dataease/dataease/releases/latest
 sudo docker-compose -f docker-compose-kettle-doris.yml up
 sudo docker-compose -f docker-compose-kettle-doris.yml down
 
+sudo docker-compose -f docker-compose-kettle-dori2.yml build
+sudo docker-compose -f docker-compose-kettle-doris2.yml up
+sudo docker-compose -f docker-compose-kettle-doris2.yml down
+sudo docker-compose -f docker-compose-kettle-doris2.yml up -2
+
 sudo docker-compose -f docker-compose-kettle-doris.yml up -d
 sudo docker-compose -f docker-compose-kettle-doris.yml logs -f
 
