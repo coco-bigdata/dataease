@@ -120,3 +120,27 @@ udf
 
 docker build -f Dockerfile -t doris:0.12.21-release .
 ```
+
+```
+# 交互式方式启动
+-i
+
+# 启动后进入容器（后面加了 -d所以不会进入）
+-t
+
+# 给容器命名
+--name centos7
+
+# 提升权限，拥有真正root权限，否则容器内root只是外部普通用户权限
+--privileged=true
+
+# 挂载目录
+# # 将宿主机的 /mydocker/centos 目录映射到容器的 /usr/local/src 目录
+-v /mydocker/centos:/usr/local/src
+
+# 后台启动
+-d
+
+# 当Docker 重启时，容器会自动启动。
+--restart=always
+```
