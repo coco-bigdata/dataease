@@ -1,8 +1,8 @@
-FROM yiluxiangbei/centos7-jdk8
+FROM openjdk:8-jre
 
 RUN mkdir -p /home/doris
 
-ENV JAVA_HOME /usr/lib/jvm/java
+ENV JAVA_HOME /usr/local/openjdk-8
 
 COPY ./fe/ /home/doris/fe
 
