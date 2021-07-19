@@ -252,3 +252,11 @@ ErrMsg:
 Version: trunk-ad365b3
 Status: {"lastSuccessReportTabletsTime":"N/A","lastStreamLoadTime":-1}
 1 row in set (0.00 sec)
+
+SELECT CURRENT_USER();
++----------------+
+| CURRENT_USER() |
++----------------+
+| 'root'@'%'     |
++----------------+
+1 row in set (0.01 sec)
