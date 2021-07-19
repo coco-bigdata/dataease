@@ -13,8 +13,8 @@ services:
       - 9030:9030
     environment:
       - DORIS_ROLE=fe-leader
-      # - FE_ROLE=fe-follower
-      # - FE_LEADER=172.19.0.198:9010
+      # - DORIS_ROLE=fe-follower
+      # - DORIS_LEADER=172.19.0.198:9010
     volumes:
       - "./doris2/fe/log:/home/doris/fe/log"
       - "./doris2/fe/doris-meta:/home/doris/fe/doris-meta"
