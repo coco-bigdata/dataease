@@ -43,6 +43,9 @@ services:
   kettle:
     image: registry.cn-qingdao.aliyuncs.com/dataease/kettle:8.3
     container_name: kettle
+    ports:
+      - 8010:9051
+      - 8011:18080
     volumes:
       - ./doris/conf/:/opt/dataease/conf
       - ./dataease/kettle-data:/opt/dataease/data/kettle
