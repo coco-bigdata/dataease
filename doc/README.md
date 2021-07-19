@@ -83,6 +83,9 @@ ALTER SYSTEM ADD BROKER broker1 "173.29.40.42:8000";
 ALTER SYSTEM drop BROKER broker1 "173.29.40.42:8000";
 CREATE DATABASE dataease;
 
+# doris 安装与部署
+# https://doris.apache.org/master/zh-CN/installing/install-deploy.html#%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2
+# doris candidate backends is empty
 # doris 修改密码
 # https://doris.apache.org/master/zh-CN/getting-started/basic-usage.html#_1-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7
 SET PASSWORD FOR 'root' = PASSWORD('root');
