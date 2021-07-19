@@ -84,6 +84,8 @@ ALTER SYSTEM drop BROKER broker1 "173.29.40.42:8000";
 CREATE DATABASE dataease;
 
 # doris 修改密码
+# https://doris.apache.org/master/zh-CN/getting-started/basic-usage.html#_1-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7
+SET PASSWORD FOR 'root' = PASSWORD('root');
 ```
 
 ```shell
