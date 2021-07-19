@@ -28,6 +28,10 @@ wget --no-check-certificate https://github.com/dataease/dataease/releases/latest
 ```shell
 sudo docker-compose -f docker-compose-kettle-doris.yml up
 sudo docker-compose -f docker-compose-kettle-doris.yml down
+sudo docker-compose -f docker-compose-kettle-doris.yml up -d
+sudo docker-compose -f docker-compose-kettle-doris.yml logs -f
+
+sudo docker-compose -f docker-compose-kettle-doris.yml up -d kettle
 
 sudo docker pull yiluxiangbei/centos7-jdk8
 sudo docker run -it -d yiluxiangbei/centos7-jdk8 /bin/bash
@@ -43,8 +47,7 @@ tail -f doris2/be/log/be.*
 http://82.157.51.152:8030/
 http://82.157.51.152:8040/
 
-sudo docker-compose -f docker-compose-kettle-doris.yml up -d
-sudo docker-compose -f docker-compose-kettle-doris.yml logs -f
+
 
 kettle      | *******************************************************************************
 kettle      | *** Karaf Instance Number: 1 at /opt/kettle/./system/karaf/caches/carte/dat ***
