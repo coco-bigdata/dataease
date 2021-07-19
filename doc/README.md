@@ -37,6 +37,8 @@ http://82.157.51.152:8030/
 http://82.157.51.152:8040/
 http://82.157.51.152:8010/
 http://82.157.51.152:8011/
+cluster
+cluster
 
 sudo docker pull yiluxiangbei/centos7-jdk8
 sudo docker run -it -d yiluxiangbei/centos7-jdk8 /bin/bash
