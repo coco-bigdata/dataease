@@ -1,5 +1,4 @@
-# centos7:jdk8是我们自己做的基础镜像
-FROM centos7:jdk8
+FROM ascdc/jdk8
 
 RUN mkdir -p /home/doris
 
