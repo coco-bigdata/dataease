@@ -37,6 +37,9 @@ sudo docker-compose -f docker-compose-kettle-doris2.yml up
 sudo docker-compose -f docker-compose-kettle-doris2.yml down
 sudo docker-compose -f docker-compose-kettle-doris2.yml up -d
 
+tail -f doris2/fe/log/fe.*
+tail -f doris2/be/log/be.*
+
 http://82.157.51.152:8030/
 http://82.157.51.152:8040/
 
