@@ -196,3 +196,31 @@ at java.sql.DriverManager.getConnection(DriverManager.java:208)
 at io.dataease.datasource.provider.JdbcProvider.getConnection(JdbcProvider.java:376)
 at io.dataease.datasource.provider.JdbcProvider.checkStatus(JdbcProvider.java:246)
 ... 13 common frames omitted
+
+
+SHOW PROC '/backends'\G
+*************************** 1. row ***************************
+BackendId: 11001
+Cluster: default_cluster
+IP: 172.19.0.198
+HostName: 5ac4ecc37896
+HeartbeatPort: 8030
+BePort: -1
+HttpPort: -1
+BrpcPort: -1
+LastStartTime: NULL
+LastHeartbeat: NULL
+Alive: false
+SystemDecommissioned: false
+ClusterDecommissioned: false
+TabletNum: 0
+DataUsedCapacity: .000
+AvailCapacity: 1.000 B
+TotalCapacity: .000
+UsedPct: 0.00 %
+MaxDiskUsedPct: 0.00 %
+ErrMsg: got exception
+Version:
+Status: {"lastSuccessReportTabletsTime":"N/A","lastStreamLoadTime":-1}
+1 row in set (0.01 sec)
+
