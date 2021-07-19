@@ -226,3 +226,29 @@ Status: {"lastSuccessReportTabletsTime":"N/A","lastStreamLoadTime":-1}
 
 SELECT CURRENT_USER();
 ERROR 1064 (HY000): errCode = 2, detailMessage = candidate backends is empty
+
+SHOW PROC '/backends'\G
+*************************** 1. row ***************************
+BackendId: 10002
+Cluster: default_cluster
+IP: 172.19.0.199
+HostName: doris-be.dataease-network
+HeartbeatPort: 9050
+BePort: 9060
+HttpPort: 8040
+BrpcPort: 8060
+LastStartTime: 2021-07-19 06:28:44
+LastHeartbeat: 2021-07-19 06:41:54
+Alive: true
+SystemDecommissioned: false
+ClusterDecommissioned: false
+TabletNum: 0
+DataUsedCapacity: .000
+AvailCapacity: 1.000 B
+TotalCapacity: .000
+UsedPct: 0.00 %
+MaxDiskUsedPct: 0.00 %
+ErrMsg:
+Version: trunk-ad365b3
+Status: {"lastSuccessReportTabletsTime":"N/A","lastStreamLoadTime":-1}
+1 row in set (0.00 sec)
