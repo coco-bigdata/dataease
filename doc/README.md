@@ -29,8 +29,8 @@ wget --no-check-certificate https://github.com/dataease/dataease/releases/latest
 sudo docker-compose -f docker-compose-kettle-doris.yml up
 sudo docker-compose -f docker-compose-kettle-doris.yml down
 
-sudo docker pull primetoninc/jdk
-sudo docker run -it -d primetoninc/jdk /bin/bash
+sudo docker pull openkbs/jdk-mvn-py3
+sudo docker run -it -d openkbs/jdk-mvn-py3 /bin/bash
 
 sudo docker-compose -f docker-compose-kettle-doris2.yml build
 sudo docker-compose -f docker-compose-kettle-doris2.yml up

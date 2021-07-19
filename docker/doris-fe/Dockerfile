@@ -1,4 +1,4 @@
-FROM primetoninc/jdk
+FROM openkbs/jdk-mvn-py3
 
 RUN mkdir -p /home/doris
 
