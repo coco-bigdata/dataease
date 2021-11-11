@@ -37,11 +37,11 @@
         </el-tooltip> -->
 
         <lang-select class="right-menu-item hover-effect" />
-        <div style="height: 100%;padding: 0 8px;" class="right-menu-item hover-effect">
+        <!--<div style="height: 100%;padding: 0 8px;" class="right-menu-item hover-effect">
           <a href="https://dataease.io/docs/" target="_blank" style="display: flex;height: 100%;width: 100%;justify-content: center;align-items: center;">
             <svg-icon icon-class="docs" />
           </a>
-        </div>
+        </div>-->
       </template>
 
       <el-dropdown class="top-dropdown" style="display: flex;align-items: center;">
