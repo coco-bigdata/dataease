@@ -69,6 +69,7 @@ sudo docker-compose down
 sudo docker-compose up
 sudo docker-compose up -d
 
+npm run build
 mvn package
 cd docker
 cp ../backend/target/backend-1.0.0.jar dataease-fe/
