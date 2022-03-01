@@ -2,7 +2,7 @@ module.exports = {
   TokenKey: 'Authorization',
   RefreshTokenKey: 'refreshauthorization',
   LinkTokenKey: 'LINK-PWD-TOKEN',
-  title: '七橙智擎',
+  title: '工业互联网标识解析管理系统',
 
   /**
    * @type {boolean} true | false
