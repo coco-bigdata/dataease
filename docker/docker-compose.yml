@@ -7,7 +7,7 @@ services:
       - 3316:3306
     command:
       --character-set-server=utf8mb4
-      --collation-server=utf8mb4_unicode_ci
+      --collation-server=utf8mb4_general_ci
       --default-authentication-plugin=mysql_native_password
     volumes:
       - ./db/conf.d/my.cnf:/etc/mysql/conf.d/my.cnf
@@ -19,7 +19,9 @@ services:
       MYSQL_ROOT_PASSWORD: root
     restart: always
   dataease:
-    image: registry.cn-qingdao.aliyuncs.com/dataease/dataease:v1.0.1
+    build:
+      context: dataease-fe
+      dockerfile: Dockerfile
     container_name: dataease
     ports:
       - 8061:8081
@@ -32,3 +34,7 @@ services:
       - dataease-mysql
     networks:
       - dataease-network
+
+networks:
+  dataease-network:
+    external: true

@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  doris-fe:
+    image: doris:0.12.21-release
+    restart: always
+    network_mode: "host"
+    container_name: "doris-fe"
+    ports:
+      - "8030:8030"
+      - "9010:9010"
+      - "9020:9020"
+      - "9030:9030"
+    volumes:
+      - "/xxx/doris/fe/log:/home/doris/fe/log"
+      - "/xxx/doris/fe/doris-meta:/home/doris/fe/doris-meta"
+      - "/xxx/doris/fe/conf:/home/doris/fe/conf"
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      - FE_ROLE=fe-follower
+      - FE_LEADER=xxxx:9010
+    security_opt:
+      - seccomp:unconfined

@@ -36,16 +36,6 @@
               <npmVersion>7.6.3</npmVersion>
             </configuration>
           </execution>
-
-          <execution>
-            <id>npm run build</id>
-            <goals>
-              <goal>npm</goal>
-            </goals>
-            <configuration>
-              <arguments>run build</arguments>
-            </configuration>
-          </execution>
         </executions>
       </plugin>
     </plugins>

@@ -2,7 +2,9 @@ version: '2.1'
 services:
 
   doris-fe:
-    image: registry.cn-qingdao.aliyuncs.com/dataease/doris-init:0.14.0-611
+    build:
+      context: doris-fe
+      dockerfile: Dockerfile
     container_name: doris-fe
     ports:
       - 8030:8030
@@ -11,30 +13,41 @@ services:
       - 9030:9030
     environment:
       - DORIS_ROLE=fe-leader
+      # - DORIS_ROLE=fe-follower
+      # - DORIS_LEADER=172.19.0.198:9010
+      - FE_ROLE=fe-leader
+      # - FE_LEADER=172.19.0.198:9010
     volumes:
-      - ./doris/fe/doris-meta:/opt/doris/fe/doris-meta
-      - ./doris/fe/log:/opt/doris/fe/log
-      - ./doris/conf/fe.conf:/opt/doris/fe/conf/fe.conf
+      - "./doris2/fe/log:/home/doris/fe/log"
+      - "./doris2/fe/doris-meta:/home/doris/fe/doris-meta"
+      - "./doris2/fe/conf:/home/doris/fe/conf"
+      - "/etc/localtime:/etc/localtime:ro"
     networks:
       dataease-network :
         ipv4_address: 172.19.0.198
+    security_opt:
+      - seccomp:unconfined
     restart: always
 
   doris-be:
-    image: registry.cn-qingdao.aliyuncs.com/dataease/doris-init:0.14.0-611
+    build:
+      context: doris-fe
+      dockerfile: Dockerfile
     container_name: doris-be
-    environment:
-      - DORIS_ROLE=be
     ports:
       - "8040:8040"
       - "8060:8060"
       - "9050:9050"
       - "9060:9060"
       - "9070:9070"
+    environment:
+      - DORIS_ROLE=be
+      - FE_ROLE=be
     volumes:
-      - ./doris/be/storage:/opt/doris/be/storage
-      - ./doris/be/log:/opt/doris/be/log
-      - ./doris/conf/be.conf:/opt/doris/be/conf/be.conf
+      - "./doris2/be/log:/home/doris/be/log"
+      - "./doris2/be/storage:/home/doris/be/storage"
+      - "./doris2/be/conf:/home/doris/be/conf/"
+      - "/etc/localtime:/etc/localtime:ro"
     networks:
       dataease-network :
         ipv4_address: 172.19.0.199
@@ -43,9 +56,6 @@ services:
   kettle:
     image: registry.cn-qingdao.aliyuncs.com/dataease/kettle:8.3
     container_name: kettle
-    ports:
-      - 8010:9051
-      - 8011:18080
     volumes:
       - ./doris/conf/:/opt/dataease/conf
       - ./dataease/kettle-data:/opt/dataease/data/kettle

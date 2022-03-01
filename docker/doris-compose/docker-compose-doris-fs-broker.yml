@@ -1,0 +1,15 @@
+version: '3.7'
+services:
+  doris-fs-broker:
+    image: doris:0.12.21-release
+    restart: always
+    network_mode: "host"
+    container_name: "doris-fs-broker"
+    ports:
+      - "8000:8000"
+    volumes:
+      - "/xxx/doris/fs_broker/conf:/home/doris/fs_broker/conf"
+      - "/xxx/doris/fs_broker/log:/home/doris/fs_broker/log"
+      - "/etc/localtime:/etc/localtime:ro"
+    environment:
+      - FE_ROLE=fs
