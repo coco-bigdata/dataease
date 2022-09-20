@@ -86,7 +86,7 @@ create database dataease;
 create database qc_bigdata default character set utf8mb4 collate utf8mb4_general_ci;
 create database qc_bigdata;
 
-mysqldump -h127.0.0.1 -P3316 -uroot -p dataease > dataease.sql
+mysqldump --column-statistics=0 -h127.0.0.1 -P3316 -uroot -p dataease > dataease.sql
 mysql -h127.0.0.1 -P3316 -uroot -p qc_bigdata < dataease.sql
 
 mysql -h127.0.0.1 -P3316 -uroot -p -e "select concat('rename table dataease.',table_name,' to qc_bigdata.',table_name,';') from information_schema.TABLES where TABLE_SCHEMA='dataease';" > rename_mysql_name.sql
