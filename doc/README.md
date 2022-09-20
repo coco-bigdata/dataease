@@ -83,6 +83,18 @@ create database dataease default character set utf8mb4 collate utf8mb4_unicode_c
 create database dataease default character set utf8mb4 collate utf8mb4_general_ci;
 create database dataease;
 
+create database qc_bigdata default character set utf8mb4 collate utf8mb4_general_ci;
+create database qc_bigdata;
+
+mysqldump -h127.0.0.1 -P3316 -uroot -p dataease > dataease.sql
+mysql -h127.0.0.1 -P3316 -uroot -p qc_bigdata < dataease.sql
+
+mysql -h127.0.0.1 -P3316 -uroot -p -e "select concat('rename table dataease.',table_name,' to qc_bigdata.',table_name,';') from information_schema.TABLES where TABLE_SCHEMA='dataease';" > rename_mysql_name.sql
+mysql -h127.0.0.1 -P3316 -uroot -p < rename_mysql_name.sql
+
+rename table dataease.chart_group to qc_bigdata.chart_group;
+ERROR 1435 (HY000): Trigger in wrong schema
+
 mysql -h127.0.0.1 -uroot -p -P9030
 ALTER SYSTEM ADD BACKEND "172.19.0.199:9050";
 SHOW PROC '/backends';
