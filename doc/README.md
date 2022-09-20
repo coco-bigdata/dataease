@@ -97,9 +97,12 @@ dataease-mysql   docker-entrypoint.sh --cha ...   Up             0.0.0.0:3316->3
  
 mysqldump --column-statistics=0 -h127.0.0.1 -P3316 -uroot -p dataease > dataease.sql
 mysql -h127.0.0.1 -P3316 -uroot -p qc_bigdata < dataease.sql
+mysqldump -hhostname -uusername -ppassword -ntd -R databasename > backupflie.sql 其中的 -ntd 是表示导出存储过程；-R是表示导出函数
 sudo docker exec -it dataease-mysql bash
-mysqldump -uroot -p dataease > dataease.sql
+mysqldump -uroot -p -R dataease > dataease.sql
 mysql -uroot -p
+drop database qc_bigdata;
+create database qc_bigdata;
 mysql -uroot -p qc_bigdata < dataease.sql
 
 mysql -h127.0.0.1 -P3316 -uroot -p -e "select concat('rename table dataease.',table_name,' to qc_bigdata.',table_name,';') from information_schema.TABLES where TABLE_SCHEMA='dataease';" > rename_mysql_name.sql
