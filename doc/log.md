@@ -268,3 +268,10 @@ tcp        0      0 127.0.0.11:38543        0.0.0.0:*               LISTEN      
 tcp        0      0 0.0.0.0:11001           0.0.0.0:*               LISTEN      50/java
 tcp        0      0 0.0.0.0:9051            0.0.0.0:*               LISTEN      50/java
 tcp        0      0 172.19.0.2:18080        0.0.0.0:*               LISTEN      50/java
+
+mysqldump -h127.0.0.1 -P3316 -uroot -p dataease > dataease.sql
+Enter password:
+mysqldump: Couldn't execute 'SELECT COLUMN_NAME,                       JSON_EXTRACT(HISTOGRAM, '$."number-of-buckets-specified"')                FROM information_schema.COLUMN_STATISTICS                WHERE SCHEMA_NAME = 'dataease' AND TABLE_NAME = 'chart_group';': Unknown table 'column_statistics' in information_schema (1109)
+
+rename table dataease.chart_group to qc_bigdata.chart_group;
+ERROR 1435 (HY000): Trigger in wrong schema
