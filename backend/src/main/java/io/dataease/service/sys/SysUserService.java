@@ -38,7 +38,7 @@ public class SysUserService {
 
     //private final static String DEFAULT_PWD = "DataEase123..";
 
-    @Value("${dataease.init_password:DataEase123..}")
+    @Value("${tortoise.init_password:DataEase123..}")
     private String DEFAULT_PWD;
 
     @Resource

@@ -103,7 +103,7 @@ public class ExtractDataService {
     private static String currentUpdateTime = "${__current_update_time__}";
     private static String separator = "|DE|";
     private static String extention = "txt";
-    private static String root_path = "/opt/dataease/data/kettle/";
+    private static String root_path = "/opt/tortoise/data/kettle/";
 
     @Value("${carte.host:127.0.0.1}")
     private String carte;

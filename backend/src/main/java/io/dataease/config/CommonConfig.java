@@ -21,7 +21,7 @@ public class CommonConfig {
 
     @Resource
     private Environment env; // 保存了配置文件的信息
-    private static String root_path = "/opt/dataease/data/kettle/";
+    private static String root_path = "/opt/tortoise/data/kettle/";
 
     @Bean(name = "DorisDatasource")
     @ConditionalOnMissingBean

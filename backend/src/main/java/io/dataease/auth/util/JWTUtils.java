@@ -74,7 +74,7 @@ public class JWTUtils {
     public static boolean loginExpire(String token){
         if (Login_Interval==0) {
             // 默认超时时间是8h
-            int minute = CommonBeanFactory.getBean(Environment.class).getProperty("dataease.login_timeout", Integer.class, 8*60);
+            int minute = CommonBeanFactory.getBean(Environment.class).getProperty("tortoise.login_timeout", Integer.class, 8*60);
             // 分钟换算成毫秒
             Login_Interval = minute * 1000 * 60;
         }
