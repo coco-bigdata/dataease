@@ -62,6 +62,7 @@ sudo docker network rm tortoise-network
 
 sudo docker-compose -f docker-compose-kettle-doris.yml up -d
 sudo docker-compose up -d
+wget http://www.7otech.com/install.zip
 
 admin
 Data1110
