@@ -59,6 +59,9 @@ sudo docker-compose -f docker-compose-kettle-doris.yml down
 sudo docker-compose -f docker-compose-kettle-doris.yml up -d
 sudo docker-compose up -d
 
+admin
+Data1110
+
 http://82.157.51.152:8030/
 http://82.157.51.152:8040/
 http://82.157.51.152:8010/
