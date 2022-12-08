@@ -58,9 +58,9 @@
           <!--          <a href="https://de-docs.fit2cloud.com/" target="_blank">-->
           <!--            <el-dropdown-item>{{ $t('commons.help_documentation') }} </el-dropdown-item>-->
           <!--          </a>-->
-          <router-link to="/about/index">
+          <!--<router-link to="/about/index">
             <el-dropdown-item>{{ $t('commons.about_us') }}</el-dropdown-item>
-          </router-link>
+          </router-link>-->
           <el-dropdown-item divided @click.native="logout">
             <span style="display:block;">{{ $t('commons.exit_system') }}</span>
           </el-dropdown-item>
