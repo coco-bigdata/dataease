@@ -88,7 +88,7 @@ INSERT INTO `demo_new_trend_of_diagnosis` (`date`, `new_diagnosis`, `current_dia
 
 
 
-INSERT INTO  `datasource` (`id`, `name`, `desc`, `type`, `configuration`, `create_time`, `update_time`, `create_by`) VALUES ('76026997-94f9-4a35-96ca-151084638969', 'demo', 'demo', 'mysql', 'ROM9ccqPioJ1SCj70u/B+KCVPfwPyNbqgIgkguMQEbjrQLbGyQLfqnQdH64Nyb+LyW+vDZzSK0SJFxUGAwGxvUtKnmpwinKRZ9OcFiQB10Nq5r/DH4+2F9/dKBs2lQgrwNj5w6MyhRswSKzkfCw5fNndcN2ad990JjOQLYz2Y5M=', '1624247414781', '1624247414781', 'admin');
+INSERT INTO  `datasource` (`id`, `name`, `desc`, `type`, `configuration`, `create_time`, `update_time`, `create_by`) VALUES ('76026997-94f9-4a35-96ca-151084638969', 'demo', 'demo', 'mysql', 'ROM9ccqPioJ1SCj70u/B+KCVPfwPyNbqgIgkguMQEbhJuzYHbQBMgEG7bas1+Kc/S7ldCYAUHzplnxFoMtbHyktc/rjYZm1BOAUC/2Tob5Hm1plV8jZwJnoMg2vabUuaHd6IJ/ReWN8/NKiwi8Uj0Sojx7dUYXkieHhs82qucBY=', '1624247414781', '1624247414781', 'admin');
 
 INSERT INTO  `dataset_group` (`id`, `name`, `pid`, `level`, `type`, `create_by`, `create_time`) VALUES ('f0728785-cc9a-4c9f-94ca-5bb106534916', '新冠肺炎疫情数据', '0', '0', 'group', 'admin', '1623211708679');
 INSERT INTO  `dataset_group` (`id`, `name`, `pid`, `level`, `type`, `create_by`, `create_time`) VALUES ('873c9833-e79d-4004-b809-a81fa83d3e7b', '国内疫情', 'f0728785-cc9a-4c9f-94ca-5bb106534916', '1', 'group', 'admin', '1623211723216');
