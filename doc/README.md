@@ -155,6 +155,7 @@ SHOW PROC "/brokers";
 ALTER SYSTEM ADD BROKER broker1 "173.29.40.42:8000";
 ALTER SYSTEM drop BROKER broker1 "173.29.40.42:8000";
 CREATE DATABASE dataease;
+CREATE DATABASE tortoise;
 
 # doris 安装与部署
 # https://doris.apache.org/master/zh-CN/installing/install-deploy.html#%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2
