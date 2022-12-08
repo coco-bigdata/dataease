@@ -56,6 +56,9 @@ sudo docker push yiluxiangbei/tortoise-kettle:8.3.1
 sudo docker-compose down
 sudo docker-compose -f docker-compose-kettle-doris.yml down
 
+sudo docker-compose -f docker-compose-kettle-doris.yml up -d
+sudo docker-compose up -d
+
 http://82.157.51.152:8030/
 http://82.157.51.152:8040/
 http://82.157.51.152:8010/
