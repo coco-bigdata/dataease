@@ -41,7 +41,7 @@ services:
     restart: always
 
   kettle:
-    image: yiluxiangbei/tortoise-kettle:8.3
+    image: yiluxiangbei/tortoise-kettle:8.3.1
     container_name: kettle
     ports:
       - 8010:9051
