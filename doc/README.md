@@ -53,8 +53,12 @@ sudo docker network create --subnet=172.20.0.0/16 tortoise-network
 sudo docker build -f Dockerfile.kettle -t yiluxiangbei/tortoise-kettle:8.3.1 .
 sudo docker push yiluxiangbei/tortoise-kettle:8.3.1
 
+sudo docker tag docker2_tortoise yiluxiangbei/tortoise:1.0
+sudo docker push yiluxiangbei/tortoise:1.0
+
 sudo docker-compose down
 sudo docker-compose -f docker-compose-kettle-doris.yml down
+sudo docker network rm tortoise-network
 
 sudo docker-compose -f docker-compose-kettle-doris.yml up -d
 sudo docker-compose up -d
