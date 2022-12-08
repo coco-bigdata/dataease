@@ -17,7 +17,7 @@ services:
       - ./doris/conf/fe.conf:/opt/doris/fe/conf/fe.conf
     networks:
       tortoise-network :
-        ipv4_address: 172.19.0.198
+        ipv4_address: 172.20.0.198
     restart: always
 
   doris-be:
@@ -37,7 +37,7 @@ services:
       - ./doris/conf/be.conf:/opt/doris/be/conf/be.conf
     networks:
       tortoise-network :
-        ipv4_address: 172.19.0.199
+        ipv4_address: 172.20.0.199
     restart: always
 
   kettle:

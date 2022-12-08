@@ -49,7 +49,7 @@ sudo docker push yiluxiangbei/doris-init:0.14.0-611
 sudo docker tag registry.cn-qingdao.aliyuncs.com/dataease/kettle:8.3 yiluxiangbei/tortoise-kettle:8.3
 sudo docker push yiluxiangbei/tortoise-kettle:8.3
 
-sudo docker network create --subnet=172.19.0.0/16 dataease-network
+sudo docker network create --subnet=172.20.0.0/16 tortoise-network
 sudo docker build -f Dockerfile.kettle -t yiluxiangbei/tortoise-kettle:8.3.1 .
 sudo docker push yiluxiangbei/tortoise-kettle:8.3.1
 
