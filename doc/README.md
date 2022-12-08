@@ -71,6 +71,9 @@ Up (healthy)
 ./update.sh
 Enter password:
 
+docs
+sudo pip3 install -r requirements/requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+
 admin
 Data1110
 
