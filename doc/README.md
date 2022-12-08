@@ -32,6 +32,7 @@ sudo docker-compose -f docker-compose-kettle-doris.yml up -d
 sudo docker-compose -f docker-compose-kettle-doris.yml logs -f
 
 sudo docker-compose -f docker-compose-kettle-doris.yml up -d kettle
+docker-compose -f docker-compose-kettle-doris.yml up -d
 
 http://82.157.51.152:8030/
 http://82.157.51.152:8040/
