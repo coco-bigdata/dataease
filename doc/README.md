@@ -53,6 +53,9 @@ sudo docker network create --subnet=172.20.0.0/16 tortoise-network
 sudo docker build -f Dockerfile.kettle -t yiluxiangbei/tortoise-kettle:8.3.1 .
 sudo docker push yiluxiangbei/tortoise-kettle:8.3.1
 
+sudo docker-compose down
+sudo docker-compose -f docker-compose-kettle-doris.yml down
+
 http://82.157.51.152:8030/
 http://82.157.51.152:8040/
 http://82.157.51.152:8010/
