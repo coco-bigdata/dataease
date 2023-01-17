@@ -62,6 +62,9 @@ sudo docker network rm tortoise-network
 
 sudo docker-compose -f docker-compose-kettle-doris.yml up -d
 sudo docker-compose up -d
+docker-compose -f docker-compose-kettle-doris.yml ps
+docker-compose -f docker-compose-kettle-doris.yml logs -f
+sudo docker-compose logs -f
 wget http://www.7otech.com/install.zip
 unzip install.zip
 cd install/
@@ -120,6 +123,7 @@ cd frontend
 npm run build
 mvn clean package
 cd docker
+cd docker2
 cp ../backend/target/backend-1.0.0.jar dataease-fe/
 cp ../backend/target/backend-1.0.0.jar tortoise-fe/
 sudo docker-compose build
