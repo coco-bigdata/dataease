@@ -146,18 +146,18 @@
 		<appender-ref ref="console"/>
 	</root>
 
-	<logger name="io.dataease" additivity="false">
+	<logger name="io.tortoise" additivity="false">
 		<level value="${logger.level:INFO}"/>
 		<appender-ref ref="infoAsyncAppender"/>
 		<appender-ref ref="warnAsyncAppender"/>
 		<appender-ref ref="errorAsyncAppender"/>
 	</logger>
 
-	<logger name="io.dataease.base.mapper" level="${logger.sql.level}">
+	<logger name="io.tortoise.base.mapper" level="${logger.sql.level}">
 		<appender-ref ref="console"/>
 	</logger>
 
-	<logger name="io.dataease.Application" additivity="false" level="${logger.level:INFO}">
+	<logger name="io.tortoise.Application" additivity="false" level="${logger.level:INFO}">
 		<appender-ref ref="infoAsyncAppender"/>
 	</logger>
 

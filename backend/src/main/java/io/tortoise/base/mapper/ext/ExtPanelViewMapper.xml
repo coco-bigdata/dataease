@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.tortoise.base.mapper.ext.ExtPanelViewMapper">
+
+    <resultMap id="treeNodeMap" type="io.tortoise.dto.panel.PanelViewDto">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="pid" property="pid" />
+        <result column="type" property="type" />
+    </resultMap>
+
+
+
+    <select id="groups"  resultMap="treeNodeMap">
+        select id, ifnull(pid,0) as pid,  name, `type`
+        from (select GET_V_AUTH_MODEL_ID_P_USE (#{userId}, 'chart') cids) t,chart_group
+        <where>
+            FIND_IN_SET(chart_group.id,cids)
+        </where>
+        order by create_time desc
+
+    </select>
+
+    <select id="views" resultMap="treeNodeMap">
+        select id, scene_id  as pid , name, `type`
+        from (select GET_V_AUTH_MODEL_ID_P_USE (#{userId}, 'chart') cids) t, chart_view
+        <where>
+            FIND_IN_SET(chart_view.id,cids)
+        </where>
+        order by create_time desc
+    </select>
+
+
+
+
+
+
+</mapper>
