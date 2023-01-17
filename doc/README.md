@@ -74,6 +74,7 @@ Enter password:
 docs
 sudo pip3 install -r requirements/requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
+https://data.7otech.com/
 admin
 Data1110
 
@@ -99,7 +100,6 @@ http://82.157.51.152:8030/
 http://82.157.51.152:8040/
 
 
-
 kettle      | *******************************************************************************
 kettle      | *** Karaf Instance Number: 1 at /opt/kettle/./system/karaf/caches/carte/dat ***
 kettle      | ***   a-1                                                                   ***
@@ -112,6 +112,9 @@ sudo docker-compose up dataease-mysql
 sudo docker-compose down
 sudo docker-compose up
 sudo docker-compose up -d
+
+dataease
+tortoise
 
 cd frontend
 npm run build
