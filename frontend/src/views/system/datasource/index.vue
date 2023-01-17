@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import DeMainContainer from '@/components/dataease/DeMainContainer'
-import DeContainer from '@/components/dataease/DeContainer'
+import DeMainContainer from '@/components/tortoise/DeMainContainer'
+import DeContainer from '@/components/tortoise/DeContainer'
 import DsMain from './DsMain'
 
 export default {

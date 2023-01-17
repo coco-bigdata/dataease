@@ -1,0 +1,41 @@
+version: '2.1'
+services:
+  tortoise-mysql:
+    image: yiluxiangbei/tortoise-mysql:5.7.25
+    container_name: tortoise-mysql
+    ports:
+      - 3316:3306
+    command:
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --default-authentication-plugin=mysql_native_password
+    volumes:
+      - ./db/conf.d/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./db/data:/var/lib/mysql
+      - ./db/init-sql:/docker-entrypoint-initdb.d
+    networks:
+      - tortoise-network
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    restart: always
+
+  tortoise:
+    build:
+      context: tortoise-fe
+      dockerfile: Dockerfile
+    container_name: tortoise
+    ports:
+      - 8061:8081
+    volumes:
+      - ./tortoise/conf:/opt/tortoise/conf
+      - ./tortoise/logs:/opt/tortoise/logs
+      - ./tortoise/plugins:/opt/tortoise/plugins/thirdpart
+      - ./tortoise/kettle-data:/opt/tortoise/data/kettle
+    depends_on:
+      - tortoise-mysql
+    networks:
+      - tortoise-network
+
+networks:
+  tortoise-network:
+    external: true

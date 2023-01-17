@@ -1,0 +1,2 @@
+FROM yiluxiangbei/tortoise-kettle:8.3
+RUN ln -s /opt/tortoise /opt/dataease

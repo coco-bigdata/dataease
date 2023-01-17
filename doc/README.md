@@ -34,6 +34,53 @@ sudo docker-compose -f docker-compose-kettle-doris.yml logs -f
 sudo docker-compose -f docker-compose-kettle-doris.yml up -d kettle
 docker-compose -f docker-compose-kettle-doris.yml up -d
 
+sudo docker run -it --rm registry.cn-qingdao.aliyuncs.com/dataease/kettle:8.3 bash
+ln -s /opt/tortoise /opt/dataease
+
+sudo docker tag registry.cn-qingdao.aliyuncs.com/dataease/mysql:5.7.25 yiluxiangbei/tortoise-mysql:5.7.25
+sudo docker push yiluxiangbei/tortoise-mysql:5.7.25
+
+sudo docker tag registry.cn-qingdao.aliyuncs.com/dataease/fabric8-java-alpine-openjdk8-jre yiluxiangbei/fabric8-java-alpine-openjdk8-jre
+sudo docker push yiluxiangbei/fabric8-java-alpine-openjdk8-jre
+
+sudo docker tag registry.cn-qingdao.aliyuncs.com/dataease/doris-init:0.14.0-611 yiluxiangbei/doris-init:0.14.0-611
+sudo docker push yiluxiangbei/doris-init:0.14.0-611
+
+sudo docker tag registry.cn-qingdao.aliyuncs.com/dataease/kettle:8.3 yiluxiangbei/tortoise-kettle:8.3
+sudo docker push yiluxiangbei/tortoise-kettle:8.3
+
+sudo docker network create --subnet=172.20.0.0/16 tortoise-network
+sudo docker build -f Dockerfile.kettle -t yiluxiangbei/tortoise-kettle:8.3.1 .
+sudo docker push yiluxiangbei/tortoise-kettle:8.3.1
+
+sudo docker tag docker2_tortoise yiluxiangbei/tortoise:1.0
+sudo docker push yiluxiangbei/tortoise:1.0
+
+sudo docker-compose down
+sudo docker-compose -f docker-compose-kettle-doris.yml down
+sudo docker network rm tortoise-network
+
+sudo docker-compose -f docker-compose-kettle-doris.yml up -d
+sudo docker-compose up -d
+docker-compose -f docker-compose-kettle-doris.yml ps
+docker-compose -f docker-compose-kettle-doris.yml logs -f
+sudo docker-compose logs -f
+wget http://www.7otech.com/install.zip
+unzip install.zip
+cd install/
+./start.sh
+./status.sh
+Up (healthy)
+./update.sh
+Enter password:
+
+docs
+sudo pip3 install -r requirements/requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+https://data.7otech.com/
+admin
+Data1110
+
 http://82.157.51.152:8030/
 http://82.157.51.152:8040/
 http://82.157.51.152:8010/
@@ -56,7 +103,6 @@ http://82.157.51.152:8030/
 http://82.157.51.152:8040/
 
 
-
 kettle      | *******************************************************************************
 kettle      | *** Karaf Instance Number: 1 at /opt/kettle/./system/karaf/caches/carte/dat ***
 kettle      | ***   a-1                                                                   ***
@@ -70,11 +116,16 @@ sudo docker-compose down
 sudo docker-compose up
 sudo docker-compose up -d
 
+dataease
+tortoise
+
 cd frontend
 npm run build
-mvn package
+mvn clean package
 cd docker
+cd docker2
 cp ../backend/target/backend-1.0.0.jar dataease-fe/
+cp ../backend/target/backend-1.0.0.jar tortoise-fe/
 sudo docker-compose build
 sudo docker-compose stop dataease
 sudo docker-compose up -d dataease
@@ -116,6 +167,7 @@ ERROR 1435 (HY000): Trigger in wrong schema
 
 mysql -h127.0.0.1 -uroot -p -P9030
 ALTER SYSTEM ADD BACKEND "172.19.0.199:9050";
+ALTER SYSTEM ADD BACKEND "172.20.0.199:9050";
 SHOW PROC '/backends';
 
 SELECT CURRENT_USER();
@@ -125,6 +177,7 @@ SHOW PROC "/brokers";
 ALTER SYSTEM ADD BROKER broker1 "173.29.40.42:8000";
 ALTER SYSTEM drop BROKER broker1 "173.29.40.42:8000";
 CREATE DATABASE dataease;
+CREATE DATABASE tortoise;
 
 # doris 安装与部署
 # https://doris.apache.org/master/zh-CN/installing/install-deploy.html#%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2

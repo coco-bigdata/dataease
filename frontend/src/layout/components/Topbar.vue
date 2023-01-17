@@ -1,8 +1,8 @@
 <template>
   <div class="top-nav" :style="{'background-color': '#f1f3f8'}">
     <div v-loading="!axiosFinished" class="log">
-      <!--      <img      v-if="!logoUrl" src="@/assets/DataEase-color.png" width="140" alt="" style="padding-top: 10px;">-->
-      <svg-icon v-if="!logoUrl && axiosFinished" icon-class="DataEase" custom-class="top-nav-logo-icon" />
+      <!--      <img      v-if="!logoUrl" src="@/assets/Tortoise-color.png" width="140" alt="" style="padding-top: 10px;">-->
+      <svg-icon v-if="!logoUrl && axiosFinished" icon-class="Tortoise" custom-class="top-nav-logo-icon" />
       <img v-if="logoUrl && axiosFinished" :src="logoUrl" width="140" alt="" style="padding-top: 10px;">
     </div>
     <el-menu

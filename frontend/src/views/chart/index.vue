@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import DeMainContainer from '@/components/dataease/DeMainContainer'
-import DeContainer from '@/components/dataease/DeContainer'
-import DeAsideContainer from '@/components/dataease/DeAsideContainer'
+import DeMainContainer from '@/components/tortoise/DeMainContainer'
+import DeContainer from '@/components/tortoise/DeContainer'
+import DeAsideContainer from '@/components/tortoise/DeAsideContainer'
 import Group from './group/Group'
 
 import ChartHome from './data/ChartHome'

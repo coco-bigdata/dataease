@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="io.tortoise.base.mapper.ext.ExtPanelShareMapper">
+
+    <resultMap id="treeNodeMap" type="io.tortoise.dto.panel.PanelSharePo">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="creator" property="creator" />
+    </resultMap>
+
+    <insert id="batchInsert" parameterType="io.tortoise.base.domain.PanelShare">
+        INSERT INTO panel_share (panel_group_id,target_id,create_time,type)
+        VALUES 
+        <foreach collection="shares" item="share" separator=",">
+            (#{share.panelGroupId}, #{share.targetId}, #{share.createTime}, #{share.type})
+        </foreach>
+    </insert>
+
+    <select id="query" resultMap="treeNodeMap">
+        select distinct s.panel_group_id as id, g.create_by as creator, g.name
+        from panel_share s
+        left join panel_group g on g.id = s.panel_group_id
+        where
+        ( s.target_id = #{userId} and s.type = 0 ) or
+        ( s.target_id = #{deptId} and s.type = 2 ) or
+        ( s.target_id in
+        <foreach collection="roleIds" item="roleId" open='(' separator=',' close=')'>
+            #{roleId}
+        </foreach>
+        and s.type = 1 )
+        <if test="orderByClause == null">
+            order by s.create_time desc
+        </if>
+
+    </select>
+
+    <select id="queryWithResource" parameterType="io.tortoise.base.mapper.ext.query.GridExample" resultMap="io.tortoise.base.mapper.PanelShareMapper.BaseResultMap">
+        select * from panel_share
+        <if test="_parameter != null">
+            <include refid="io.tortoise.base.mapper.ext.query.GridSql.gridCondition" />
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+
+
+    </select>
+
+
+
+
+
+</mapper>
