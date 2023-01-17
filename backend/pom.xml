@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>dataease-server</artifactId>
+        <artifactId>tortoise-server</artifactId>
         <groupId>io.tortoise</groupId>
         <version>1.0.0</version>
     </parent>
@@ -352,10 +352,10 @@
             <version>0.9.1.2</version>
         </dependency>
         <!--由于暂时插件接口未注册到公司仓库，请先down下代码安装到本地仓库
-        https://github.com/dataease/dataease-plugins-->
+        https://github.com/tortoise/tortoise-plugins-->
         <dependency>
             <groupId>io.tortoise</groupId>
-            <artifactId>dataease-plugin-interface</artifactId>
+            <artifactId>tortoise-plugin-interface</artifactId>
             <version>1.0</version>
         </dependency>
     </dependencies>
