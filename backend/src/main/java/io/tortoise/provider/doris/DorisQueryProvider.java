@@ -79,31 +79,31 @@ public class DorisQueryProvider extends QueryProvider {
             // 如果原始类型为时间
             if (f.getDeExtractType() == 1) {
                 if (f.getDeType() == 2 || f.getDeType() == 3) {
-                    stringBuilder.append("unix_timestamp(").append(f.gettortoiseName()).append(")*1000 as ").append(f.gettortoiseName());
+                    stringBuilder.append("unix_timestamp(").append(f.getTortoiseName()).append(")*1000 as ").append(f.getTortoiseName());
                 } else {
-                    stringBuilder.append(f.gettortoiseName());
+                    stringBuilder.append(f.getTortoiseName());
                 }
             } else if (f.getDeExtractType() == 0) {
                 if (f.getDeType() == 2) {
-                    stringBuilder.append("cast(").append(f.gettortoiseName()).append(" as decimal(20,0)) as ").append(f.gettortoiseName());
+                    stringBuilder.append("cast(").append(f.getTortoiseName()).append(" as decimal(20,0)) as ").append(f.getTortoiseName());
                 } else if (f.getDeType() == 3) {
-                    stringBuilder.append("cast(").append(f.gettortoiseName()).append(" as decimal(20,2)) as ").append(f.gettortoiseName());
+                    stringBuilder.append("cast(").append(f.getTortoiseName()).append(" as decimal(20,2)) as ").append(f.getTortoiseName());
                 } else if (f.getDeType() == 1) {
-                    stringBuilder.append("DATE_FORMAT(").append(f.gettortoiseName()).append(",'%Y-%m-%d %H:%i:%S') as _").append(f.gettortoiseName());
+                    stringBuilder.append("DATE_FORMAT(").append(f.getTortoiseName()).append(",'%Y-%m-%d %H:%i:%S') as _").append(f.getTortoiseName());
                 } else {
-                    stringBuilder.append(f.gettortoiseName());
+                    stringBuilder.append(f.getTortoiseName());
                 }
             } else {
                 if (f.getDeType() == 1) {
-                    stringBuilder.append("FROM_UNIXTIME(cast(").append(f.gettortoiseName()).append(" as decimal(20,0))/1000,'%Y-%m-%d %H:%i:%S') as ").append(f.gettortoiseName());
+                    stringBuilder.append("FROM_UNIXTIME(cast(").append(f.getTortoiseName()).append(" as decimal(20,0))/1000,'%Y-%m-%d %H:%i:%S') as ").append(f.getTortoiseName());
                 } else {
-                    stringBuilder.append(f.gettortoiseName());
+                    stringBuilder.append(f.getTortoiseName());
                 }
             }
             return stringBuilder.toString();
         }).toArray(String[]::new);
 
-        return MessageFormat.format("SELECT {0} FROM {1} ORDER BY " + (fields.size() > 0 ? fields.get(0).gettortoiseName() : "null"), StringUtils.join(array, ","), table);
+        return MessageFormat.format("SELECT {0} FROM {1} ORDER BY " + (fields.size() > 0 ? fields.get(0).getTortoiseName() : "null"), StringUtils.join(array, ","), table);
     }
 
     @Override
@@ -126,15 +126,15 @@ public class DorisQueryProvider extends QueryProvider {
         // 字段汇总 排序等
         String[] field = yAxis.stream().map(y -> {
             StringBuilder f = new StringBuilder();
-            if (StringUtils.equalsIgnoreCase(y.gettortoiseName(), "*")) {
-                f.append(y.getSummary()).append("(").append(y.gettortoiseName()).append(")");
+            if (StringUtils.equalsIgnoreCase(y.getTortoiseName(), "*")) {
+                f.append(y.getSummary()).append("(").append(y.getTortoiseName()).append(")");
             } else {
                 f.append("ROUND(")
                         .append(y.getSummary()).append("(")
-                        .append("CAST(").append(y.gettortoiseName()).append(" AS ").append(y.getDeType() == 2 ? "DECIMAL(20,0)" : "DECIMAL(20,2)").append(")")
+                        .append("CAST(").append(y.getTortoiseName()).append(" AS ").append(y.getDeType() == 2 ? "DECIMAL(20,0)" : "DECIMAL(20,2)").append(")")
                         .append("),2").append(")");
             }
-            f.append(" AS _").append(y.getSummary()).append("_").append(StringUtils.equalsIgnoreCase(y.gettortoiseName(), "*") ? "" : y.gettortoiseName());
+            f.append(" AS _").append(y.getSummary()).append("_").append(StringUtils.equalsIgnoreCase(y.getTortoiseName(), "*") ? "" : y.getTortoiseName());
             return f.toString();
         }).toArray(String[]::new);
         String[] groupField = xAxis.stream().map(x -> {
@@ -142,32 +142,32 @@ public class DorisQueryProvider extends QueryProvider {
             // 如果原始类型为时间
             if (x.getDeExtractType() == 1) {
                 if (x.getDeType() == 2 || x.getDeType() == 3) {
-                    stringBuilder.append("unix_timestamp(").append(x.gettortoiseName()).append(")*1000 as _").append(x.gettortoiseName());
+                    stringBuilder.append("unix_timestamp(").append(x.getTortoiseName()).append(")*1000 as _").append(x.getTortoiseName());
                 } else if (x.getDeType() == 1) {
                     String format = transDateFormat(x.getDateStyle(), x.getDatePattern());
-                    stringBuilder.append("DATE_FORMAT(").append(x.gettortoiseName()).append(",'").append(format).append("') as _").append(x.gettortoiseName());
+                    stringBuilder.append("DATE_FORMAT(").append(x.getTortoiseName()).append(",'").append(format).append("') as _").append(x.getTortoiseName());
                 } else {
-                    stringBuilder.append(x.gettortoiseName()).append(" as _").append(x.gettortoiseName());
+                    stringBuilder.append(x.getTortoiseName()).append(" as _").append(x.getTortoiseName());
                 }
             } else {
                 if (x.getDeType() == 1) {
                     String format = transDateFormat(x.getDateStyle(), x.getDatePattern());
                     if (x.getDeExtractType() == 0) {
-                        stringBuilder.append("DATE_FORMAT(").append(x.gettortoiseName()).append(",'").append(format).append("') as _").append(x.gettortoiseName());
+                        stringBuilder.append("DATE_FORMAT(").append(x.getTortoiseName()).append(",'").append(format).append("') as _").append(x.getTortoiseName());
                     } else {
-                        stringBuilder.append("DATE_FORMAT(").append("FROM_UNIXTIME(cast(").append(x.gettortoiseName()).append(" as decimal(20,0))/1000,'%Y-%m-%d %H:%i:%S')").append(",'").append(format).append("') as _").append(x.gettortoiseName());
+                        stringBuilder.append("DATE_FORMAT(").append("FROM_UNIXTIME(cast(").append(x.getTortoiseName()).append(" as decimal(20,0))/1000,'%Y-%m-%d %H:%i:%S')").append(",'").append(format).append("') as _").append(x.getTortoiseName());
                     }
                 } else {
-                    stringBuilder.append(x.gettortoiseName()).append(" as _").append(x.gettortoiseName());
+                    stringBuilder.append(x.getTortoiseName()).append(" as _").append(x.getTortoiseName());
                 }
             }
             return stringBuilder.toString();
         }).toArray(String[]::new);
-        String[] group = xAxis.stream().map(x -> "_" + x.gettortoiseName()).toArray(String[]::new);
+        String[] group = xAxis.stream().map(x -> "_" + x.getTortoiseName()).toArray(String[]::new);
         String[] xOrder = xAxis.stream().filter(f -> StringUtils.isNotEmpty(f.getSort()) && !StringUtils.equalsIgnoreCase(f.getSort(), "none"))
-                .map(f -> "_" + f.gettortoiseName() + " " + f.getSort()).toArray(String[]::new);
+                .map(f -> "_" + f.getTortoiseName() + " " + f.getSort()).toArray(String[]::new);
         String[] yOrder = yAxis.stream().filter(f -> StringUtils.isNotEmpty(f.getSort()) && !StringUtils.equalsIgnoreCase(f.getSort(), "none"))
-                .map(f -> "_" + f.getSummary() + "_" + (StringUtils.equalsIgnoreCase(f.gettortoiseName(), "*") ? "" : f.gettortoiseName()) + " " + f.getSort()).toArray(String[]::new);
+                .map(f -> "_" + f.getSummary() + "_" + (StringUtils.equalsIgnoreCase(f.getTortoiseName(), "*") ? "" : f.getTortoiseName()) + " " + f.getSort()).toArray(String[]::new);
         String[] order = Arrays.copyOf(xOrder, xOrder.length + yOrder.length);
         System.arraycopy(yOrder, 0, order, xOrder.length, yOrder.length);
 
@@ -177,10 +177,10 @@ public class DorisQueryProvider extends QueryProvider {
                         StringBuilder filter = new StringBuilder();
                         if (x.getDeType() == 1 && x.getDeExtractType() != 1) {
                             filter.append(" AND FROM_UNIXTIME(cast(")
-                                    .append(x.gettortoiseName())
+                                    .append(x.getTortoiseName())
                                     .append(" AS decimal(20,0))/1000,'%Y-%m-%d %H:%i:%S') ");
                         } else {
-                            filter.append(" AND ").append(x.gettortoiseName());
+                            filter.append(" AND ").append(x.getTortoiseName());
                         }
                         filter.append(transMysqlFilterTerm(f.getTerm()));
                         if (StringUtils.containsIgnoreCase(f.getTerm(), "null")) {
@@ -213,10 +213,10 @@ public class DorisQueryProvider extends QueryProvider {
                         StringBuilder filter = new StringBuilder();
                         if (y.getDeType() == 1 && y.getDeExtractType() != 1) {
                             filter.append(" AND FROM_UNIXTIME(cast(_")
-                                    .append(y.getSummary()).append("_").append(StringUtils.equalsIgnoreCase(y.gettortoiseName(), "*") ? "" : y.gettortoiseName())
+                                    .append(y.getSummary()).append("_").append(StringUtils.equalsIgnoreCase(y.getTortoiseName(), "*") ? "" : y.getTortoiseName())
                                     .append(" AS decimal(20,0))/1000,'%Y-%m-%d %H:%i:%S') ");
                         } else {
-                            filter.append(" AND _").append(y.getSummary()).append("_").append(StringUtils.equalsIgnoreCase(y.gettortoiseName(), "*") ? "" : y.gettortoiseName());
+                            filter.append(" AND _").append(y.getSummary()).append("_").append(StringUtils.equalsIgnoreCase(y.getTortoiseName(), "*") ? "" : y.getTortoiseName());
                         }
                         filter.append(transMysqlFilterTerm(f.getTerm()));
                         if (StringUtils.containsIgnoreCase(f.getTerm(), "null")) {
@@ -257,26 +257,26 @@ public class DorisQueryProvider extends QueryProvider {
         // 字段汇总 排序等
         String[] field = yAxis.stream().map(y -> {
             StringBuilder f = new StringBuilder();
-            if (StringUtils.equalsIgnoreCase(y.gettortoiseName(), "*")) {
-                f.append(y.getSummary()).append("(").append(y.gettortoiseName()).append(")");
+            if (StringUtils.equalsIgnoreCase(y.getTortoiseName(), "*")) {
+                f.append(y.getSummary()).append("(").append(y.getTortoiseName()).append(")");
             } else {
                 if (StringUtils.equalsIgnoreCase(y.getSummary(), "avg") || StringUtils.containsIgnoreCase(y.getSummary(), "pop")) {
                     f.append("CAST(")
                             .append(y.getSummary()).append("(")
-                            .append("CAST(").append(y.gettortoiseName()).append(" AS ").append(y.getDeType() == 2 ? "DECIMAL(20,0)" : "DECIMAL(20,2)").append(")")
+                            .append("CAST(").append(y.getTortoiseName()).append(" AS ").append(y.getDeType() == 2 ? "DECIMAL(20,0)" : "DECIMAL(20,2)").append(")")
                             .append(") AS DECIMAL(20,2)").append(")");
                 } else {
                     f.append(y.getSummary()).append("(")
-                            .append("CAST(").append(y.gettortoiseName()).append(" AS ").append(y.getDeType() == 2 ? "DECIMAL(20,0)" : "DECIMAL(20,2)").append(")")
+                            .append("CAST(").append(y.getTortoiseName()).append(" AS ").append(y.getDeType() == 2 ? "DECIMAL(20,0)" : "DECIMAL(20,2)").append(")")
                             .append(")");
                 }
             }
-            f.append(" AS _").append(y.getSummary()).append("_").append(StringUtils.equalsIgnoreCase(y.gettortoiseName(), "*") ? "" : y.gettortoiseName());
+            f.append(" AS _").append(y.getSummary()).append("_").append(StringUtils.equalsIgnoreCase(y.getTortoiseName(), "*") ? "" : y.getTortoiseName());
             return f.toString();
         }).toArray(String[]::new);
 
         String[] order = yAxis.stream().filter(f -> StringUtils.isNotEmpty(f.getSort()) && !StringUtils.equalsIgnoreCase(f.getSort(), "none"))
-                .map(f -> "_" + f.getSummary() + "_" + (StringUtils.equalsIgnoreCase(f.gettortoiseName(), "*") ? "" : f.gettortoiseName()) + " " + f.getSort()).toArray(String[]::new);
+                .map(f -> "_" + f.getSummary() + "_" + (StringUtils.equalsIgnoreCase(f.getTortoiseName(), "*") ? "" : f.getTortoiseName()) + " " + f.getSort()).toArray(String[]::new);
 
         String sql = MessageFormat.format("SELECT {0} FROM {1} WHERE 1=1 {2} ORDER BY null,{3}",
                 StringUtils.join(field, ","),
@@ -294,10 +294,10 @@ public class DorisQueryProvider extends QueryProvider {
                         // 原始类型不是时间，在de中被转成时间的字段做处理
                         if (y.getDeType() == 1 && y.getDeExtractType() != 1) {
                             filter.append(" AND FROM_UNIXTIME(cast(_")
-                                    .append(y.getSummary()).append("_").append(StringUtils.equalsIgnoreCase(y.gettortoiseName(), "*") ? "" : y.gettortoiseName())
+                                    .append(y.getSummary()).append("_").append(StringUtils.equalsIgnoreCase(y.getTortoiseName(), "*") ? "" : y.getTortoiseName())
                                     .append(" AS decimal(20,0))/1000,'%Y-%m-%d %H:%i:%S') ");
                         } else {
-                            filter.append(" AND _").append(y.getSummary()).append("_").append(StringUtils.equalsIgnoreCase(y.gettortoiseName(), "*") ? "" : y.gettortoiseName());
+                            filter.append(" AND _").append(y.getSummary()).append("_").append(StringUtils.equalsIgnoreCase(y.getTortoiseName(), "*") ? "" : y.getTortoiseName());
                         }
                         filter.append(transMysqlFilterTerm(f.getTerm()));
                         if (StringUtils.containsIgnoreCase(f.getTerm(), "null")) {
@@ -342,7 +342,7 @@ public class DorisQueryProvider extends QueryProvider {
     public String createRawQuerySQL(String table, List<DatasetTableField> fields){
         String[] array = fields.stream().map(f -> {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("`").append(f.getOriginName()).append("` AS ").append(f.gettortoiseName());
+            stringBuilder.append("`").append(f.getOriginName()).append("` AS ").append(f.getTortoiseName());
             return stringBuilder.toString();
         }).toArray(String[]::new);
         return MessageFormat.format("SELECT {0} FROM {1} ORDER BY null", StringUtils.join(array, ","), table);
@@ -406,10 +406,10 @@ public class DorisQueryProvider extends QueryProvider {
             }
             if (field.getDeType() == 1 && field.getDeExtractType() != 1) {
                 filter.append(" AND FROM_UNIXTIME(cast(")
-                        .append(field.gettortoiseName())
+                        .append(field.getTortoiseName())
                         .append(" AS decimal(20,0))/1000,'%Y-%m-%d %H:%i:%S') ");
             } else {
-                filter.append(" AND ").append(field.gettortoiseName());
+                filter.append(" AND ").append(field.getTortoiseName());
             }
             filter.append(" ")
                     .append(transMysqlFilterTerm(request.getTerm()))
@@ -439,10 +439,10 @@ public class DorisQueryProvider extends QueryProvider {
             DatasetTableField field = request.getDatasetTableField();
             if (field.getDeType() == 1 && field.getDeExtractType() != 1) {
                 filter.append(" AND FROM_UNIXTIME(cast(")
-                        .append(field.gettortoiseName())
+                        .append(field.getTortoiseName())
                         .append(" AS decimal(20,0))/1000,'%Y-%m-%d %H:%i:%S') ");
             } else {
-                filter.append(" AND ").append(field.gettortoiseName());
+                filter.append(" AND ").append(field.getTortoiseName());
             }
             filter.append(" ")
                     .append(transMysqlFilterTerm(request.getOperator()))

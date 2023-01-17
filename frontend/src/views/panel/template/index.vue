@@ -65,9 +65,9 @@
 </template>
 
 <script>
-import DeMainContainer from '@/components/dataease/DeMainContainer'
-import DeContainer from '@/components/dataease/DeContainer'
-import DeAsideContainer from '@/components/dataease/DeAsideContainer'
+import DeMainContainer from '@/components/tortoise/DeMainContainer'
+import DeContainer from '@/components/tortoise/DeContainer'
+import DeAsideContainer from '@/components/tortoise/DeAsideContainer'
 import TemplateList from './component/TemplateList'
 import TemplateItem from './component/TemplateItem'
 import TemplateImport from './component/TemplateImport'

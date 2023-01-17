@@ -384,72 +384,72 @@ public class DatasetTableFieldExample {
             return (Criteria) this;
         }
 
-        public Criteria andtortoiseNameIsNull() {
+        public Criteria andTortoiseNameIsNull() {
             addCriterion("tortoise_name is null");
             return (Criteria) this;
         }
 
-        public Criteria andtortoiseNameIsNotNull() {
+        public Criteria andTortoiseNameIsNotNull() {
             addCriterion("tortoise_name is not null");
             return (Criteria) this;
         }
 
-        public Criteria andtortoiseNameEqualTo(String value) {
+        public Criteria andTortoiseNameEqualTo(String value) {
             addCriterion("tortoise_name =", value, "tortoiseName");
             return (Criteria) this;
         }
 
-        public Criteria andtortoiseNameNotEqualTo(String value) {
+        public Criteria andTortoiseNameNotEqualTo(String value) {
             addCriterion("tortoise_name <>", value, "tortoiseName");
             return (Criteria) this;
         }
 
-        public Criteria andtortoiseNameGreaterThan(String value) {
+        public Criteria andTortoiseNameGreaterThan(String value) {
             addCriterion("tortoise_name >", value, "tortoiseName");
             return (Criteria) this;
         }
 
-        public Criteria andtortoiseNameGreaterThanOrEqualTo(String value) {
+        public Criteria andTortoiseNameGreaterThanOrEqualTo(String value) {
             addCriterion("tortoise_name >=", value, "tortoiseName");
             return (Criteria) this;
         }
 
-        public Criteria andtortoiseNameLessThan(String value) {
+        public Criteria andTortoiseNameLessThan(String value) {
             addCriterion("tortoise_name <", value, "tortoiseName");
             return (Criteria) this;
         }
 
-        public Criteria andtortoiseNameLessThanOrEqualTo(String value) {
+        public Criteria andTortoiseNameLessThanOrEqualTo(String value) {
             addCriterion("tortoise_name <=", value, "tortoiseName");
             return (Criteria) this;
         }
 
-        public Criteria andtortoiseNameLike(String value) {
+        public Criteria andTortoiseNameLike(String value) {
             addCriterion("tortoise_name like", value, "tortoiseName");
             return (Criteria) this;
         }
 
-        public Criteria andtortoiseNameNotLike(String value) {
+        public Criteria andTortoiseNameNotLike(String value) {
             addCriterion("tortoise_name not like", value, "tortoiseName");
             return (Criteria) this;
         }
 
-        public Criteria andtortoiseNameIn(List<String> values) {
+        public Criteria andTortoiseNameIn(List<String> values) {
             addCriterion("tortoise_name in", values, "tortoiseName");
             return (Criteria) this;
         }
 
-        public Criteria andtortoiseNameNotIn(List<String> values) {
+        public Criteria andTortoiseNameNotIn(List<String> values) {
             addCriterion("tortoise_name not in", values, "tortoiseName");
             return (Criteria) this;
         }
 
-        public Criteria andtortoiseNameBetween(String value1, String value2) {
+        public Criteria andTortoiseNameBetween(String value1, String value2) {
             addCriterion("tortoise_name between", value1, value2, "tortoiseName");
             return (Criteria) this;
         }
 
-        public Criteria andtortoiseNameNotBetween(String value1, String value2) {
+        public Criteria andTortoiseNameNotBetween(String value1, String value2) {
             addCriterion("tortoise_name not between", value1, value2, "tortoiseName");
             return (Criteria) this;
         }

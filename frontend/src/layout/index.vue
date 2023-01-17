@@ -26,9 +26,9 @@
 <script>
 import { Sidebar, AppMain, Topbar, Licbar } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
-import DeMainContainer from '@/components/dataease/DeMainContainer'
-import DeContainer from '@/components/dataease/DeContainer'
-import DeAsideContainer from '@/components/dataease/DeAsideContainer'
+import DeMainContainer from '@/components/tortoise/DeMainContainer'
+import DeContainer from '@/components/tortoise/DeContainer'
+import DeAsideContainer from '@/components/tortoise/DeAsideContainer'
 export default {
   name: 'Layout',
   components: {

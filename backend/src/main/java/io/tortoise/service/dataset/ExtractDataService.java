@@ -197,7 +197,7 @@ public class ExtractDataService {
                     if(datasetTable.getType().equalsIgnoreCase("sql")){
                         generateJobFile("all_scope", datasetTable, fetchSqlField(new Gson().fromJson(datasetTable.getInfo(), DataTableInfoDTO.class).getSql(), datasource));
                     }else {
-                        generateJobFile("all_scope", datasetTable, String.join(",", datasetTableFields.stream().map(DatasetTableField::gettortoiseName).collect(Collectors.toList())));
+                        generateJobFile("all_scope", datasetTable, String.join(",", datasetTableFields.stream().map(DatasetTableField::getTortoiseName).collect(Collectors.toList())));
                     }
                     Long execTime = System.currentTimeMillis();
                     extractData(datasetTable, "all_scope");
@@ -223,7 +223,7 @@ public class ExtractDataService {
                     if(datasource.getType().equalsIgnoreCase("excel")){
                         datasetTableTaskLog = writeDatasetTableTaskLog(datasetTableTaskLog, datasetTableId, null);
                         generateTransFile("incremental_add", datasetTable, datasource, datasetTableFields, null);
-                        generateJobFile("incremental_add", datasetTable, String.join(",", datasetTableFields.stream().map(DatasetTableField::gettortoiseName).collect(Collectors.toList())));
+                        generateJobFile("incremental_add", datasetTable, String.join(",", datasetTableFields.stream().map(DatasetTableField::getTortoiseName).collect(Collectors.toList())));
                         Long execTime = System.currentTimeMillis();
                         extractData(datasetTable, "incremental_add");
                         saveSucessLog(datasetTableTaskLog);
@@ -321,7 +321,7 @@ public class ExtractDataService {
     private String createDorisTablColumnSql(List<DatasetTableField> datasetTableFields) {
         String Column_Fields = "tortoise_uuid  varchar(50), `";
         for (DatasetTableField datasetTableField : datasetTableFields) {
-            Column_Fields = Column_Fields + datasetTableField.gettortoiseName() + "` ";
+            Column_Fields = Column_Fields + datasetTableField.getTortoiseName() + "` ";
             switch (datasetTableField.getDeExtractType()) {
                 case 0:
                     if (datasetTableField.getSize() > 65533 || datasetTableField.getSize() * 3 > 65533) {
@@ -766,7 +766,7 @@ public class ExtractDataService {
         String needToChangeColumnType = "";
         for (DatasetTableField datasetTableField : datasetTableFields) {
             if (datasetTableField.getDeExtractType() != null && datasetTableField.getDeExtractType() == 4) {
-                needToChangeColumnType = needToChangeColumnType + alterColumnTypeCode.replace("FILED", datasetTableField.gettortoiseName());
+                needToChangeColumnType = needToChangeColumnType + alterColumnTypeCode.replace("FILED", datasetTableField.getTortoiseName());
             }
         }
 
@@ -782,7 +782,7 @@ public class ExtractDataService {
         if(isExcel){
             tmp_code = tmp_code.replace("handleExcelIntColumn", handleExcelIntColumn).replace("Column_Fields", String.join(",", datasetTableFields.stream().map(DatasetTableField::getOriginName).collect(Collectors.toList())));;
         }else {
-            tmp_code = tmp_code.replace("handleExcelIntColumn", "").replace("Column_Fields", String.join(",", datasetTableFields.stream().map(DatasetTableField::gettortoiseName).collect(Collectors.toList())));;
+            tmp_code = tmp_code.replace("handleExcelIntColumn", "").replace("Column_Fields", String.join(",", datasetTableFields.stream().map(DatasetTableField::getTortoiseName).collect(Collectors.toList())));;
         }
         UserDefinedJavaClassDef userDefinedJavaClassDef = new UserDefinedJavaClassDef(UserDefinedJavaClassDef.ClassType.TRANSFORM_CLASS, "Processor", tmp_code);
 

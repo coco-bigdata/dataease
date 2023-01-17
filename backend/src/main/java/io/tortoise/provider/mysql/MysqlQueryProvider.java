@@ -79,25 +79,25 @@ public class MysqlQueryProvider extends QueryProvider {
             // 如果原始类型为时间
             if (f.getDeExtractType() == 1) {
                 if (f.getDeType() == 2 || f.getDeType() == 3) {
-                    stringBuilder.append("UNIX_TIMESTAMP(`").append(f.getOriginName()).append("`)*1000 AS ").append(f.gettortoiseName());
+                    stringBuilder.append("UNIX_TIMESTAMP(`").append(f.getOriginName()).append("`)*1000 AS ").append(f.getTortoiseName());
                 } else {
-                    stringBuilder.append("`").append(f.getOriginName()).append("` AS ").append(f.gettortoiseName());
+                    stringBuilder.append("`").append(f.getOriginName()).append("` AS ").append(f.getTortoiseName());
                 }
             } else if (f.getDeExtractType() == 0) {
                 if (f.getDeType() == 2) {
-                    stringBuilder.append("CAST(`").append(f.getOriginName()).append("` AS DECIMAL(20,0)) AS ").append(f.gettortoiseName());
+                    stringBuilder.append("CAST(`").append(f.getOriginName()).append("` AS DECIMAL(20,0)) AS ").append(f.getTortoiseName());
                 } else if (f.getDeType() == 3) {
-                    stringBuilder.append("CAST(`").append(f.getOriginName()).append("` AS DECIMAL(20,2)) AS ").append(f.gettortoiseName());
+                    stringBuilder.append("CAST(`").append(f.getOriginName()).append("` AS DECIMAL(20,2)) AS ").append(f.getTortoiseName());
                 } else if (f.getDeType() == 1) {
-                    stringBuilder.append("DATE_FORMAT(`").append(f.getOriginName()).append("`,'%Y-%m-%d %H:%i:%S') AS _").append(f.gettortoiseName());
+                    stringBuilder.append("DATE_FORMAT(`").append(f.getOriginName()).append("`,'%Y-%m-%d %H:%i:%S') AS _").append(f.getTortoiseName());
                 } else {
-                    stringBuilder.append("`").append(f.getOriginName()).append("` AS ").append(f.gettortoiseName());
+                    stringBuilder.append("`").append(f.getOriginName()).append("` AS ").append(f.getTortoiseName());
                 }
             } else {
                 if (f.getDeType() == 1) {
-                    stringBuilder.append("FROM_UNIXTIME(CAST(`").append(f.getOriginName()).append("` AS DECIMAL(20,0))/1000,'%Y-%m-%d %H:%i:%S') AS ").append(f.gettortoiseName());
+                    stringBuilder.append("FROM_UNIXTIME(CAST(`").append(f.getOriginName()).append("` AS DECIMAL(20,0))/1000,'%Y-%m-%d %H:%i:%S') AS ").append(f.getTortoiseName());
                 } else {
-                    stringBuilder.append("`").append(f.getOriginName()).append("` AS ").append(f.gettortoiseName());
+                    stringBuilder.append("`").append(f.getOriginName()).append("` AS ").append(f.getTortoiseName());
                 }
             }
             return stringBuilder.toString();
@@ -350,7 +350,7 @@ public class MysqlQueryProvider extends QueryProvider {
     public String createRawQuerySQL(String table, List<DatasetTableField> fields){
         String[] array = fields.stream().map(f -> {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.append("`").append(f.getOriginName()).append("` AS ").append(f.gettortoiseName());
+            stringBuilder.append("`").append(f.getOriginName()).append("` AS ").append(f.getTortoiseName());
             return stringBuilder.toString();
         }).toArray(String[]::new);
         return MessageFormat.format("SELECT {0} FROM {1} ORDER BY null", StringUtils.join(array, ","), table);

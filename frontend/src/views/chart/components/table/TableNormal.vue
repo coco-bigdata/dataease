@@ -17,8 +17,8 @@
     >
       <ux-table-column
         v-for="field in fields"
-        :key="field.dataeaseName"
-        :field="field.dataeaseName"
+        :key="field.tortoiseName"
+        :field="field.tortoiseName"
         :resizable="true"
         sortable
         :title="field.name"

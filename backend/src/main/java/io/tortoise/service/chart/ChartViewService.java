@@ -249,9 +249,9 @@ public class ChartViewService {
             for (int i = 0; i < fields.size(); i++) {
                 ChartViewFieldDTO chartViewFieldDTO = fields.get(i);
                 if (chartViewFieldDTO.getDeType() == 0 || chartViewFieldDTO.getDeType() == 1) {
-                    d.put(fields.get(i).gettortoiseName(), StringUtils.isEmpty(ele[i]) ? "" : ele[i]);
+                    d.put(fields.get(i).getTortoiseName(), StringUtils.isEmpty(ele[i]) ? "" : ele[i]);
                 } else if (chartViewFieldDTO.getDeType() == 2 || chartViewFieldDTO.getDeType() == 3) {
-                    d.put(fields.get(i).gettortoiseName(), new BigDecimal(StringUtils.isEmpty(ele[i]) ? "0" : ele[i]).setScale(2, RoundingMode.HALF_UP));
+                    d.put(fields.get(i).getTortoiseName(), new BigDecimal(StringUtils.isEmpty(ele[i]) ? "0" : ele[i]).setScale(2, RoundingMode.HALF_UP));
                 }
             }
             tableRow.add(d);

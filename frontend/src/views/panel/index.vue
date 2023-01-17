@@ -11,8 +11,8 @@
 
 <script>
 import bus from '@/utils/bus'
-import DeMainContainer from '@/components/dataease/DeMainContainer'
-import DeContainer from '@/components/dataease/DeContainer'
+import DeMainContainer from '@/components/tortoise/DeMainContainer'
+import DeContainer from '@/components/tortoise/DeContainer'
 import PanelMain from '@/views/panel/list/PanelMain'
 import ChartEdit from '@/views/chart/view/ChartEdit'
 import PanelEdit from '@/views/panel/edit'

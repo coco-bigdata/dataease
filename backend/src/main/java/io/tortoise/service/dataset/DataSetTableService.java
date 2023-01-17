@@ -267,7 +267,7 @@ public class DataSetTableService {
         datasetTableField.setTableId(dataSetTableRequest.getId());
         datasetTableField.setChecked(Boolean.TRUE);
         List<DatasetTableField> fields = dataSetTableFieldsService.list(datasetTableField);
-        String[] fieldArray = fields.stream().map(DatasetTableField::gettortoiseName).toArray(String[]::new);
+        String[] fieldArray = fields.stream().map(DatasetTableField::getTortoiseName).toArray(String[]::new);
 
         DataTableInfoDTO dataTableInfoDTO = new Gson().fromJson(dataSetTableRequest.getInfo(), DataTableInfoDTO.class);
         DatasetTable datasetTable = datasetTableMapper.selectByPrimaryKey(dataSetTableRequest.getId());
@@ -486,7 +486,7 @@ public class DataSetTableService {
             });
             for (DatasetTableField datasetTableField : checkedFieldList) {
                 for (TableFiled tableFiled : fields) {
-                    if (StringUtils.equalsIgnoreCase(tableFiled.getFieldName(), DorisTableUtils.dorisFieldName(datasetTableField.getTableId() + "_" + datasetTableField.gettortoiseName()))) {
+                    if (StringUtils.equalsIgnoreCase(tableFiled.getFieldName(), DorisTableUtils.dorisFieldName(datasetTableField.getTableId() + "_" + datasetTableField.getTortoiseName()))) {
                         tableFiled.setRemarks(datasetTableField.getName());
                         break;
                     }
@@ -514,7 +514,7 @@ public class DataSetTableService {
             if (CollectionUtils.isEmpty(fields)) {
                 throw new RuntimeException(Translator.get("i18n_cst_ds_tb_or_field_deleted"));
             }
-            String[] array = fields.stream().map(f -> table + "." + f.gettortoiseName() + " AS " + DorisTableUtils.dorisFieldName(ele.getTableId() + "_" + f.gettortoiseName())).toArray(String[]::new);
+            String[] array = fields.stream().map(f -> table + "." + f.getTortoiseName() + " AS " + DorisTableUtils.dorisFieldName(ele.getTableId() + "_" + f.getTortoiseName())).toArray(String[]::new);
             customInfo.put(table, array);
         });
         DataTableInfoCustomUnion first = dataTableInfoDTO.getList().get(0);
@@ -537,9 +537,9 @@ public class DataSetTableService {
                         join.append(convertUnionTypeToSQL(dto.getSourceUnionRelation()))
                                 .append(DorisTableUtils.dorisName(dto.getTargetTableId()))
                                 .append(" ON ")
-                                .append(DorisTableUtils.dorisName(dto.getSourceTableId())).append(".").append(sourceField.gettortoiseName())
+                                .append(DorisTableUtils.dorisName(dto.getSourceTableId())).append(".").append(sourceField.getTortoiseName())
                                 .append(" = ")
-                                .append(DorisTableUtils.dorisName(dto.getTargetTableId())).append(".").append(targetField.gettortoiseName());
+                                .append(DorisTableUtils.dorisName(dto.getTargetTableId())).append(".").append(targetField.getTortoiseName());
                     }
                 }
             }
@@ -599,7 +599,7 @@ public class DataSetTableService {
             list.forEach(ele -> {
                 List<DatasetTableField> listByIds = dataSetTableFieldsService.getListByIdsEach(ele.getCheckedFields());
                 listByIds.forEach(f -> {
-                    f.settortoiseName(DorisTableUtils.dorisFieldName(ele.getTableId() + "_" + f.gettortoiseName()));
+                    f.setTortoiseName(DorisTableUtils.dorisFieldName(ele.getTableId() + "_" + f.getTortoiseName()));
                 });
                 fieldList.addAll(listByIds);
             });
@@ -625,7 +625,7 @@ public class DataSetTableService {
                 datasetTableField.setTableId(datasetTable.getId());
                 datasetTableField.setOriginName(filed.getFieldName());
                 datasetTableField.setName(filed.getRemarks());
-                datasetTableField.settortoiseName(DorisTableUtils.columnName(filed.getFieldName()));
+                datasetTableField.setTortoiseName(DorisTableUtils.columnName(filed.getFieldName()));
                 datasetTableField.setType(filed.getFieldType());
                 if (ObjectUtils.isEmpty(ds)) {
                     datasetTableField.setDeType(transFieldType(filed.getFieldType()));
