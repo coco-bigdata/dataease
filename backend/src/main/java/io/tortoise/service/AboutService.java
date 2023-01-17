@@ -19,7 +19,7 @@ import java.util.Optional;
 @Service
 public class AboutService {
     private static final String BUILD_VERSION = "/opt/tortoise/conf/version";
-    private static final String product = "DataEase";
+    private static final String product = "Tortoise";
 
     @Resource
     private DefaultLicenseService defaultLicenseService;
