@@ -87,6 +87,9 @@ sudo systemctl enable docker.service
 sudo systemctl status docker
 sudo docker -v 
 
+sudo cp docker-compose /usr/bin/
+docker-compose -v
+
 docker export
 docker import
 docker save
