@@ -75,6 +75,9 @@ Up (healthy)
 ./update.sh
 Enter password:
 
+https://download.docker.com/linux/static/stable/x86_64/
+wget https://download.docker.com/linux/static/stable/x86_64/docker-20.10.9.tgz
+
 docker export
 docker import
 docker save
