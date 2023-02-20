@@ -74,6 +74,14 @@ Up (healthy)
 ./update.sh
 Enter password:
 
+docker export
+docker import
+docker save
+docker load
+docker save yiluxiangbei/doris-init:0.14.0-611 > init20230220.tar
+docker save -o images.tar yiluxiangbei/doris-init:0.14.0-611 yiluxiangbei/tortoise-kettle:8.3.1 yiluxiangbei/tortoise-mysql:5.7.25 yiluxiangbei/tortoise:1.0
+docker load < images.tar
+
 docs
 sudo pip3 install -r requirements/requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
