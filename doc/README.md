@@ -77,6 +77,15 @@ Enter password:
 
 https://download.docker.com/linux/static/stable/x86_64/
 wget https://download.docker.com/linux/static/stable/x86_64/docker-20.10.9.tgz
+tar -xvf docker-20.10.9.tgz
+sudo cp docker/* /usr/bin/
+sudo cp docker.service /etc/systemd/system/docker.service
+
+sudo systemctl daemon-reload
+sudo systemctl start docker
+sudo systemctl enable docker.service
+sudo systemctl status docker
+sudo docker -v 
 
 docker export
 docker import
