@@ -203,6 +203,7 @@ GRANT ALL ON example_db TO test;
 ```shell
 wget https://mirrors.bfsu.edu.cn/apache/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz
 PATH=/home/git/apache-maven-3.8.1/bin:$PATH
+docker export image
 ```
 
 ```shell
