@@ -68,7 +68,7 @@ sudo docker-compose logs -f
 wget http://www.7otech.com/install.zip
 unzip install.zip
 cd install/
-./install.sh
+./load.sh
 ./start.sh
 ./status.sh
 Up (healthy)
