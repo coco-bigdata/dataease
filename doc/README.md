@@ -155,6 +155,9 @@ sudo docker-compose build
 sudo docker-compose stop dataease
 sudo docker-compose up -d dataease
 sudo docker-compose up dataease
+sudo docker-compose stop tortoise
+sudo docker-compose up -d tortoise
+sudo docker-compose up tortoise
 sudo docker-compose logs -f
 
 mysql -h127.0.0.1 -P3316 -uroot -p
