@@ -54,13 +54,18 @@ sudo docker build -f Dockerfile.kettle -t yiluxiangbei/tortoise-kettle:8.3.1 .
 sudo docker push yiluxiangbei/tortoise-kettle:8.3.1
 
 sudo docker tag docker2_tortoise yiluxiangbei/tortoise:1.0
+sudo docker tag docker2_tortoise yiluxiangbei/tortoise:lanshi
+sudo docker tag docker2_tortoise registry.cn-beijing.aliyuncs.com/luomor/tortoise:lanshi
 sudo docker push yiluxiangbei/tortoise:1.0
+sudo docker push yiluxiangbei/tortoise:lanshi
+sudo docker push registry.cn-beijing.aliyuncs.com/luomor/tortoise:lanshi
 
 sudo docker-compose down
 sudo docker-compose -f docker-compose-kettle-doris.yml down
 sudo docker network rm tortoise-network
 
 sudo docker-compose -f docker-compose-kettle-doris.yml up -d
+sudo docker-compose up -d
 sudo docker-compose up -d
 docker-compose -f docker-compose-kettle-doris.yml ps
 docker-compose -f docker-compose-kettle-doris.yml logs -f
@@ -223,6 +228,7 @@ GRANT ALL ON example_db TO test;
 wget https://mirrors.bfsu.edu.cn/apache/maven/maven-3/3.8.1/binaries/apache-maven-3.8.1-bin.tar.gz
 PATH=/home/git/apache-maven-3.8.1/bin:$PATH
 docker export image
+docker rmi `docker images|grep none |  awk '{print $3}'`
 ```
 
 ```shell
