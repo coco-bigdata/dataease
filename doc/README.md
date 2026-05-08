@@ -108,7 +108,10 @@ docs
 sudo pip3 install -r requirements/requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 https://data.7otech.com/
+http://8.130.33.208/
 admin
+Data1110
+demo
 Data1110
 
 http://82.157.51.152:8030/
@@ -131,7 +134,6 @@ tail -f doris2/be/log/be.*
 
 http://82.157.51.152:8030/
 http://82.157.51.152:8040/
-
 
 kettle      | *******************************************************************************
 kettle      | *** Karaf Instance Number: 1 at /opt/kettle/./system/karaf/caches/carte/dat ***
@@ -168,6 +170,7 @@ sudo docker-compose logs -f
 mysql -h127.0.0.1 -P3316 -uroot -p
 root
 use dataease
+use qc_bigdata
 SHOW PROCEDURE STATUS LIKE '%'\G
 create database dataease default character set utf8mb4 collate utf8mb4_unicode_ci;
 create database dataease default character set utf8mb4 collate utf8mb4_general_ci;
