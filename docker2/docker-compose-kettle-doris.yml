@@ -19,7 +19,7 @@ services:
       - "9030:9030"  # MySQL 协议端口（用于连接 Doris 执行 SQL）
       - "9010:9010"  # FE RPC 端口（用于与 BE 通信）
     networks:
-      doris-net:
+      tortoise-network:
         ipv4_address: 172.20.0.198  # 固定 FE IP，避免通信异常
     restart: always  # 容器异常时自动重启
  
@@ -43,7 +43,7 @@ services:
     depends_on:
       - doris-fe  # 确保 FE 先启动，再启动 BE
     networks:
-      doris-net:
+      tortoise-network:
         ipv4_address: 172.20.0.199  # 固定 BE IP
     restart: always
 
