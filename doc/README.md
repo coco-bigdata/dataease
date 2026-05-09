@@ -26,6 +26,7 @@ wget --no-check-certificate https://github.com/dataease/dataease/releases/latest
 ```
 
 ```shell
+sudo docker-compose -f docker-compose-network.yml up -d
 sudo docker-compose -f docker-compose-kettle-doris.yml up
 sudo docker-compose -f docker-compose-kettle-doris.yml down
 sudo docker-compose -f docker-compose-kettle-doris.yml up -d
