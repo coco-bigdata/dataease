@@ -1,43 +1,50 @@
 version: '2.1'
 services:
 
+  # Doris FE（Frontend，前端节点，负责元数据管理、SQL 解析）
   doris-fe:
-    image: yiluxiangbei/doris-init:0.14.0-611
+    image: apache/doris:fe-3.1.4
     container_name: doris-fe
-    ports:
-      - 8030:8030
-      - 9010:9010
-      - 9020:9020
-      - 9030:9030
+    hostname: doris-fe
+    privileged: true
     environment:
-      - DORIS_ROLE=fe-leader
+      - FE_SERVERS=fe1:172.20.0.198:9010  # FE 节点信息，格式：节点名:IP:RPC端口
+      - FE_ID=1  # FE 节点 ID，单机版固定为 1
+      - TZ=Asia/Shanghai  # 时区配置，避免时间错乱
     volumes:
-      - ./doris/fe/doris-meta:/opt/doris/fe/doris-meta
-      - ./doris/fe/log:/opt/doris/fe/log
-      - ./doris/conf/fe.conf:/opt/doris/fe/conf/fe.conf
+      - ./doris/fe/doris-meta:/opt/apache-doris/fe/doris-meta  # 挂载 FE 元数据目录
+      - ./doris/fe/log:/opt/apache-doris/fe/log  # 挂载 FE 日志目录
+    ports:
+      - "8030:8030"  # FE Web UI 端口（用于管理）
+      - "9030:9030"  # MySQL 协议端口（用于连接 Doris 执行 SQL）
+      - "9010:9010"  # FE RPC 端口（用于与 BE 通信）
     networks:
-      tortoise-network :
-        ipv4_address: 172.20.0.198
-    restart: always
-
+      doris-net:
+        ipv4_address: 172.20.0.198  # 固定 FE IP，避免通信异常
+    restart: always  # 容器异常时自动重启
+ 
+  # Doris BE（Backend，后端节点，负责数据存储和计算）
   doris-be:
-    image: yiluxiangbei/doris-init:0.14.0-611
+    image: apache/doris:be-3.1.4
     container_name: doris-be
+    hostname: doris-be
+    privileged: true
     environment:
-      - DORIS_ROLE=be
-    ports:
-      - "8040:8040"
-      - "8060:8060"
-      - "9050:9050"
-      - "9060:9060"
-      - "9070:9070"
+      - FE_SERVERS=fe1:172.20.0.198:9010  # 关联 FE 节点，与上方 FE 配置一致
+      - BE_ADDR=172.20.0.199:9050  # BE 节点地址，格式：IP:BRPC端口
+      - TZ=Asia/Shanghai
     volumes:
-      - ./doris/be/storage:/opt/doris/be/storage
-      - ./doris/be/log:/opt/doris/be/log
-      - ./doris/conf/be.conf:/opt/doris/be/conf/be.conf
+      - ./doris/be/storage:/opt/apache-doris/be/storage  # 挂载 BE 数据存储目录
+      - ./doris/be/log:/opt/apache-doris/be/log  # 挂载 BE 日志目录
+    ports:
+      - "8040:8040"  # BE Web UI 端口
+      - "9050:9050"  # BE BRPC 端口（与 FE 通信）
+      - "8060:8060"  # BE 心跳端口
+    depends_on:
+      - doris-fe  # 确保 FE 先启动，再启动 BE
     networks:
-      tortoise-network :
-        ipv4_address: 172.20.0.199
+      doris-net:
+        ipv4_address: 172.20.0.199  # 固定 BE IP
     restart: always
 
   kettle:

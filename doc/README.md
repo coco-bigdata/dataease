@@ -158,6 +158,7 @@ sudo docker-compose up dataease
 sudo docker-compose logs -f
 
 mysql -h127.0.0.1 -P3316 -uroot -p
+mysql -h127.0.0.1 -P3316 -uroot -p --ssl-mode=DISABLED
 root
 use dataease
 SHOW PROCEDURE STATUS LIKE '%'\G
