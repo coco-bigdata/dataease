@@ -1,7 +1,7 @@
 package io.tortoise.service;
 
 import io.tortoise.base.domain.FileMetadata;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
