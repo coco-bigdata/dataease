@@ -3,7 +3,7 @@ services:
 
   # Doris FE（Frontend，前端节点，负责元数据管理、SQL 解析）
   doris-fe:
-    image: apache/doris:fe-2.1.7
+    image: apache/doris:fe-3.1.4
     container_name: doris-fe
     hostname: doris-fe
     environment:
@@ -24,7 +24,7 @@ services:
  
   # Doris BE（Backend，后端节点，负责数据存储和计算）
   doris-be:
-    image: apache/doris:be-2.1.7
+    image: apache/doris:be-3.1.4
     container_name: doris-be
     hostname: doris-be
     environment:

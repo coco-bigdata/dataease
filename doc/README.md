@@ -32,6 +32,9 @@ sudo docker compose -f docker-compose-network.yml up -d
 sudo docker compose -f docker-compose-kettle-doris.yml up -d
 sudo docker compose up -d
 
+sudo docker logs -f doris-be
+sudo docker logs -f doris-fe
+
 sudo docker-compose -f docker-compose-kettle-doris.yml up
 sudo docker-compose -f docker-compose-kettle-doris.yml down
 sudo docker-compose -f docker-compose-kettle-doris.yml up -d
