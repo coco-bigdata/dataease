@@ -107,6 +107,11 @@ https://data.7otech.com/
 admin
 Data1110
 
+http://139.199.23.58:8163/
+https://data.luomor.com/
+admin
+Data1110
+
 http://82.157.51.152:8030/
 http://82.157.51.152:8040/
 http://82.157.51.152:8010/
@@ -169,6 +174,9 @@ create database dataease;
 
 create database qc_bigdata default character set utf8mb4 collate utf8mb4_general_ci;
 create database qc_bigdata;
+create database solar_data default character set utf8mb4 collate utf8mb4_general_ci;
+CREATE USER 'root'@'%' IDENTIFIED BY 'root';
+GRANT ALL ON *.* TO 'root'@'%'; FLUSH PRIVILEGES;
 
 sudo docker-compose ps
      Name                   Command                  State                     Ports
