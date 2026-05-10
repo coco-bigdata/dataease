@@ -3,10 +3,9 @@ services:
 
   # Doris FE（Frontend，前端节点，负责元数据管理、SQL 解析）
   doris-fe:
-    image: apache/doris:fe-3.1.4
+    image: apache/doris:fe-2.1.7
     container_name: doris-fe
     hostname: doris-fe
-    privileged: true
     environment:
       - FE_SERVERS=fe1:172.20.0.198:9010  # FE 节点信息，格式：节点名:IP:RPC端口
       - FE_ID=1  # FE 节点 ID，单机版固定为 1
@@ -14,7 +13,6 @@ services:
     volumes:
       - ./doris/fe/doris-meta:/opt/apache-doris/fe/doris-meta  # 挂载 FE 元数据目录
       - ./doris/fe/log:/opt/apache-doris/fe/log  # 挂载 FE 日志目录
-      - ./doris/conf/fe.conf:/opt/apache-doris/fe/conf/fe.conf
     ports:
       - "8030:8030"  # FE Web UI 端口（用于管理）
       - "9030:9030"  # MySQL 协议端口（用于连接 Doris 执行 SQL）
@@ -26,19 +24,16 @@ services:
  
   # Doris BE（Backend，后端节点，负责数据存储和计算）
   doris-be:
-    image: apache/doris:be-3.1.4
+    image: apache/doris:be-2.1.7
     container_name: doris-be
     hostname: doris-be
-    privileged: true
     environment:
       - FE_SERVERS=fe1:172.20.0.198:9010  # 关联 FE 节点，与上方 FE 配置一致
       - BE_ADDR=172.20.0.199:9050  # BE 节点地址，格式：IP:BRPC端口
-      - BE_START_TIMEOUT=120  # BE 启动超时时间，增加等待 FE 启动的时间，避免 BE 启动失败
       - TZ=Asia/Shanghai
     volumes:
       - ./doris/be/storage:/opt/apache-doris/be/storage  # 挂载 BE 数据存储目录
       - ./doris/be/log:/opt/apache-doris/be/log  # 挂载 BE 日志目录
-      - ./doris/conf/be.conf:/opt/apache-doris/be/conf/be.conf
     ports:
       - "8040:8040"  # BE Web UI 端口
       - "9050:9050"  # BE BRPC 端口（与 FE 通信）
