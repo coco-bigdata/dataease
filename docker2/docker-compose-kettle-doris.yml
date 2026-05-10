@@ -37,6 +37,7 @@ services:
     volumes:
       - ./doris/be/storage:/opt/apache-doris/be/storage  # 挂载 BE 数据存储目录
       - ./doris/be/log:/opt/apache-doris/be/log  # 挂载 BE 日志目录
+      - ./doris/conf/be.conf:/opt/apache-doris/be/conf/be.conf
     ports:
       - "8040:8040"  # BE Web UI 端口
       - "9050:9050"  # BE BRPC 端口（与 FE 通信）
