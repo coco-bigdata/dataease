@@ -26,8 +26,12 @@ wget --no-check-certificate https://github.com/dataease/dataease/releases/latest
 ```
 
 ```shell
+sudo docker network rm tortoise-network
+sudo docker network create --subnet=172.20.0.0/24 tortoise-network
+sudo docker network create --subnet=172.20.80.0/24 tortoise-network
 sudo docker compose -f docker-compose-network.yml up -d
 sudo docker compose -f docker-compose-kettle-doris.yml up -d
+sudo docker compose up -d
 
 sudo docker-compose -f docker-compose-kettle-doris.yml up
 sudo docker-compose -f docker-compose-kettle-doris.yml down

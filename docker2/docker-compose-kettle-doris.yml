@@ -7,7 +7,7 @@ services:
     container_name: doris-fe
     hostname: doris-fe
     environment:
-      - FE_SERVERS=fe1:172.20.0.198:9010  # FE 节点信息，格式：节点名:IP:RPC端口
+      - FE_SERVERS=fe1:172.20.80.2:9010  # FE 节点信息，格式：节点名:IP:RPC端口
       - FE_ID=1  # FE 节点 ID，单机版固定为 1
       - TZ=Asia/Shanghai  # 时区配置，避免时间错乱
     volumes:
@@ -19,7 +19,7 @@ services:
       - "9010:9010"  # FE RPC 端口（用于与 BE 通信）
     networks:
       tortoise-network:
-        ipv4_address: 172.20.0.198  # 固定 FE IP，避免通信异常
+        ipv4_address: 172.20.80.2  # 固定 FE IP，避免通信异常
     restart: always  # 容器异常时自动重启
  
   # Doris BE（Backend，后端节点，负责数据存储和计算）
@@ -28,8 +28,8 @@ services:
     container_name: doris-be
     hostname: doris-be
     environment:
-      - FE_SERVERS=fe1:172.20.0.198:9010  # 关联 FE 节点，与上方 FE 配置一致
-      - BE_ADDR=172.20.0.199:9050  # BE 节点地址，格式：IP:BRPC端口
+      - FE_SERVERS=fe1:172.20.80.2:9010  # 关联 FE 节点，与上方 FE 配置一致
+      - BE_ADDR=172.20.80.3:9050  # BE 节点地址，格式：IP:BRPC端口
       - TZ=Asia/Shanghai
     volumes:
       - ./doris/be/storage:/opt/apache-doris/be/storage  # 挂载 BE 数据存储目录
@@ -42,7 +42,7 @@ services:
       - doris-fe  # 确保 FE 先启动，再启动 BE
     networks:
       tortoise-network:
-        ipv4_address: 172.20.0.199  # 固定 BE IP
+        ipv4_address: 172.20.80.3  # 固定 BE IP
     restart: always
 
   kettle:
