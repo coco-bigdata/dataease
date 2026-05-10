@@ -32,6 +32,8 @@ sudo docker-compose -f docker-compose-kettle-doris.yml down
 sudo docker-compose -f docker-compose-kettle-doris.yml up -d
 sudo docker-compose -f docker-compose-kettle-doris.yml logs -f
 
+sudo docker logs doris-be 2>&1 | grep -E "ERROR|FATAL|StorageEngine|initialize"
+
 sudo docker-compose -f docker-compose-kettle-doris.yml up -d kettle
 docker-compose -f docker-compose-kettle-doris.yml up -d
 
