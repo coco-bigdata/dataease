@@ -31,7 +31,7 @@ services:
     environment:
       - FE_SERVERS=fe1:172.20.80.198:9010  # 关联 FE 节点，与上方 FE 配置一致
       - BE_ADDR=172.20.80.199:9050  # BE 节点地址，格式：IP:BRPC端口
-      - BE_START_TIMEOUT=300
+      - BE_START_TIMEOUT=600
       - TZ=Asia/Shanghai
     volumes:
       - ./doris/be/storage:/opt/apache-doris/be/storage  # 挂载 BE 数据存储目录
