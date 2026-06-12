@@ -13,6 +13,7 @@ services:
     volumes:
       - ./doris/fe/doris-meta:/opt/apache-doris/fe/doris-meta  # 挂载 FE 元数据目录
       - ./doris/fe/log:/opt/apache-doris/fe/log  # 挂载 FE 日志目录
+      - ./doris/conf3.1.4/fe.conf:/opt/apache-doris/fe/conf/fe.conf
     ports:
       - "8030:8030"  # FE Web UI 端口（用于管理）
       - "9030:9030"  # MySQL 协议端口（用于连接 Doris 执行 SQL）
@@ -30,10 +31,12 @@ services:
     environment:
       - FE_SERVERS=fe1:172.20.80.198:9010  # 关联 FE 节点，与上方 FE 配置一致
       - BE_ADDR=172.20.80.199:9050  # BE 节点地址，格式：IP:BRPC端口
+      - BE_START_TIMEOUT=300
       - TZ=Asia/Shanghai
     volumes:
       - ./doris/be/storage:/opt/apache-doris/be/storage  # 挂载 BE 数据存储目录
       - ./doris/be/log:/opt/apache-doris/be/log  # 挂载 BE 日志目录
+      - ./doris/conf3.1.4/be.conf:/opt/apache-doris/be/conf/be.conf
     ports:
       - "8040:8040"  # BE Web UI 端口
       - "9050:9050"  # BE BRPC 端口（与 FE 通信）
