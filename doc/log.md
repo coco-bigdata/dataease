@@ -306,3 +306,6 @@ OpenJDK 64-Bit Server VM warning: INFO: os::commit_memory(0x0000000600000000, 85
 # Native memory allocation (mmap) failed to map 8589934592 bytes for committing reserved memory.
 # An error report file with more information is saved as:
 # /opt/apache-doris/hs_err_pid621.log
+
+sudo docker run -d --name flink-jm -p 8081:8081 -p 6123:6123 -e TZ=Asia/Shanghai -e JOB_MANAGER_RPC_ADDRESS=flink-jm -e DISABLE_JEMALLOC=true  --restart unless-stopped apache/flink:1.17.2-scala_2.12-java11 jobmanager
+
