@@ -44,9 +44,13 @@ services:
       - "8040:8040"  # BE Web UI 端口
       - "9050:9050"  # BE BRPC 端口（与 FE 通信）
       - "8060:8060"  # BE 心跳端口
+    ulimits:
+      nofile:
+        soft: 655350
+        hard: 655350
     entrypoint: ["/bin/bash", "-c"]
     command:
-      - cd /opt/apache-doris/be && ./bin/start_be.sh --foreground
+      - cd /opt/apache-doris/be && ./bin/start_be.sh --console
     depends_on:
       - doris-fe  # 确保 FE 先启动，再启动 BE
     networks:
