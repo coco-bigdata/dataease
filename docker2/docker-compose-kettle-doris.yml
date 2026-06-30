@@ -28,6 +28,9 @@ services:
     image: apache/doris:be-2.1.11
     container_name: doris-be
     hostname: doris-be
+    privileged: true
+    mem_limit: 16g
+    memswap_limit: 20g
     environment:
       - FE_SERVERS=fe1:172.20.80.198:9010  # 关联 FE 节点，与上方 FE 配置一致
       - BE_ADDR=172.20.80.199:9050  # BE 节点地址，格式：IP:BRPC端口
